@@ -1,0 +1,16 @@
+apiVersion: virtual_cran_repository.crossplane.io/v1alpha1
+kind: CranRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtual_cran_repository/v1alpha1/cranrepository
+  labels:
+    testing.upbound.io/example-name: foo-cran
+  name: foo-cran
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-cran
+    notes: Internal description
+    repositories: []

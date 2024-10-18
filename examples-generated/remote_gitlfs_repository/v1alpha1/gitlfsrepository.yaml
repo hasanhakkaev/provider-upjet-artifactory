@@ -1,0 +1,12 @@
+apiVersion: remote_gitlfs_repository.crossplane.io/v1alpha1
+kind: GitlfsRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_gitlfs_repository/v1alpha1/gitlfsrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-gitlfs
+  name: my-remote-gitlfs
+spec:
+  forProvider:
+    key: my-remote-gitlfs
+    url: http://testartifactory.io/artifactory/example-gitlfs/

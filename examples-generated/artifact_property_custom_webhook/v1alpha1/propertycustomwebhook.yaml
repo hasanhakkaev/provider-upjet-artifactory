@@ -1,0 +1,47 @@
+apiVersion: artifact_property_custom_webhook.crossplane.io/v1alpha1
+kind: PropertyCustomWebhook
+metadata:
+  annotations:
+    meta.upbound.io/example-id: artifact_property_custom_webhook/v1alpha1/propertycustomwebhook
+  labels:
+    testing.upbound.io/example-name: artifact-custom-webhook
+  name: artifact-custom-webhook
+spec:
+  forProvider:
+    criteria:
+    - anyLocal: true
+      anyRemote: false
+      excludePatterns:
+      - bar/**
+      includePatterns:
+      - foo/**
+      repoKeys:
+      - ${artifactory_local_generic_repository.my-generic-local.key}
+    eventTypes:
+    - added
+    - deleted
+    handler:
+    - httpHeaders:
+        headerName1: value1
+        headerName2: value2
+      payload: '{ "ref": "main" , "inputs": { "artifact_path": "test-repo/repo-path"
+        } }'
+      secrets:
+        secretName1: value1
+        secretName2: value2
+      url: https://tempurl.org
+    key: artifact-property-custom-webhook
+
+---
+
+apiVersion: local_generic_repository.crossplane.io/v1alpha1
+kind: GenericRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: artifact_property_custom_webhook/v1alpha1/propertycustomwebhook
+  labels:
+    testing.upbound.io/example-name: my-generic-local
+  name: my-generic-local
+spec:
+  forProvider:
+    key: my-generic-local

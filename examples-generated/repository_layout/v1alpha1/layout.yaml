@@ -1,0 +1,16 @@
+apiVersion: repository_layout.crossplane.io/v1alpha1
+kind: Layout
+metadata:
+  annotations:
+    meta.upbound.io/example-id: repository_layout/v1alpha1/layout
+  labels:
+    testing.upbound.io/example-name: custom-layout
+  name: custom-layout
+spec:
+  forProvider:
+    artifactPathPattern: '[orgPath]/[module]/[baseRev](-[folderItegRev])/[module]-[baseRev](-[fileItegRev])(-[classifier]).[ext]'
+    descriptorPathPattern: '[orgPath]/[module]/[baseRev](-[folderItegRev])/[module]-[baseRev](-[fileItegRev])(-[classifier]).pom'
+    distinctiveDescriptorPathPattern: true
+    fileIntegrationRevisionRegexp: Foo|(?:(?:[0-9]{8}.[0-9]{6})-(?:[0-9]+))
+    folderIntegrationRevisionRegexp: Foo
+    name: custom-layout

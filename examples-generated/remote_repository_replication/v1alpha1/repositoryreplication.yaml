@@ -1,0 +1,53 @@
+apiVersion: remote_repository_replication.crossplane.io/v1alpha1
+kind: RepositoryReplication
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_repository_replication/v1alpha1/repositoryreplication
+  labels:
+    testing.upbound.io/example-name: remote-rep
+  name: remote-rep
+spec:
+  forProvider:
+    checkBinaryExistenceInFilestore: false
+    cronExp: 0 0 * * * ?
+    enableEventReplication: true
+    enabled: true
+    excludePathPrefixPattern: /some-other-repo/
+    includePathPrefixPattern: /some-repo/
+    repoKey: maven-remote-foo
+    syncDeletes: false
+    syncProperties: true
+
+---
+
+apiVersion: local_maven_repository.crossplane.io/v1alpha1
+kind: MavenRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_repository_replication/v1alpha1/repositoryreplication
+  labels:
+    testing.upbound.io/example-name: provider_test_source
+  name: provider-test-source
+spec:
+  forProvider:
+    key: provider_test_source
+
+---
+
+apiVersion: remote_maven_repository.crossplane.io/v1alpha1
+kind: MavenRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_repository_replication/v1alpha1/repositoryreplication
+  labels:
+    testing.upbound.io/example-name: provider_test_dest
+  name: provider-test-dest
+spec:
+  forProvider:
+    key: provider_test_dest
+    passwordSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system
+    url: ${var.artifactory_url}/artifactory/${artifactory_local_maven_repository.artifactory_local_maven_repository.key}
+    username: foo

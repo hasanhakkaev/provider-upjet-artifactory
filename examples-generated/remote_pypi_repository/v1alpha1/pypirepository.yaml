@@ -1,0 +1,14 @@
+apiVersion: remote_pypi_repository.crossplane.io/v1alpha1
+kind: PypiRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_pypi_repository/v1alpha1/pypirepository
+  labels:
+    testing.upbound.io/example-name: pypi-remote
+  name: pypi-remote
+spec:
+  forProvider:
+    key: pypi-remote-foo
+    pypiRegistryUrl: https://pypi.org
+    pypiRepositorySuffix: simple
+    url: https://files.pythonhosted.org

@@ -1,0 +1,29 @@
+apiVersion: certificate.crossplane.io/v1alpha1
+kind: Certificate
+metadata:
+  annotations:
+    meta.upbound.io/example-id: certificate/v1alpha1/certificate
+  labels:
+    testing.upbound.io/example-name: my-cert
+  name: my-cert
+spec:
+  forProvider:
+    alias: my-cert
+    contentSecretRef:
+      key: attribute.bundle.pem
+      name: example-secret
+      namespace: upbound-system
+
+---
+
+apiVersion: remote_maven_repository.crossplane.io/v1alpha1
+kind: MavenRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: certificate/v1alpha1/certificate
+  labels:
+    testing.upbound.io/example-name: my-remote
+  name: my-remote
+spec:
+  forProvider:
+    clientTlsCertificate: my-cert

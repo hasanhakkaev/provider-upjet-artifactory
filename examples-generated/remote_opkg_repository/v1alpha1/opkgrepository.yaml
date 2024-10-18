@@ -1,0 +1,12 @@
+apiVersion: remote_opkg_repository.crossplane.io/v1alpha1
+kind: OpkgRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_opkg_repository/v1alpha1/opkgrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-opkg
+  name: my-remote-opkg
+spec:
+  forProvider:
+    key: my-remote-opkg
+    url: http://testartifactory.io/artifactory/example-opkg/

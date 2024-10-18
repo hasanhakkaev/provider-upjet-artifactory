@@ -1,0 +1,13 @@
+apiVersion: remote_conan_repository.crossplane.io/v1alpha1
+kind: ConanRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_conan_repository/v1alpha1/conanrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-conan
+  name: my-remote-conan
+spec:
+  forProvider:
+    forceConanAuthentication: true
+    key: my-remote-conan
+    url: https://conan.io/center/

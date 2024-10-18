@@ -1,0 +1,11 @@
+apiVersion: local_gems_repository.crossplane.io/v1alpha1
+kind: GemsRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: local_gems_repository/v1alpha1/gemsrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-gems-repo
+  name: terraform-local-test-gems-repo
+spec:
+  forProvider:
+    key: terraform-local-test-gems-repo

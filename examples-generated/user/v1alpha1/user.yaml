@@ -1,0 +1,29 @@
+apiVersion: user.crossplane.io/v1alpha1
+kind: User
+metadata:
+  annotations:
+    meta.upbound.io/example-id: user/v1alpha1/user
+  labels:
+    testing.upbound.io/example-name: test-user
+  name: test-user
+spec:
+  forProvider:
+    admin: false
+    disableUiAccess: false
+    email: test-user@artifactory-terraform.com
+    groups:
+    - readers
+    - logged-in-users
+    internalPasswordDisabled: false
+    name: terraform
+    password_policy:
+      digit: 1
+      length: 10
+      lowercase: 1
+      special_char: 1
+      uppercase: 1
+    passwordSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system
+    profileUpdatable: true

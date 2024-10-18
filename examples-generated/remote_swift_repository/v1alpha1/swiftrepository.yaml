@@ -1,0 +1,12 @@
+apiVersion: remote_swift_repository.crossplane.io/v1alpha1
+kind: SwiftRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_swift_repository/v1alpha1/swiftrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-swift
+  name: my-remote-swift
+spec:
+  forProvider:
+    key: my-remote-swift
+    url: https://swift.org/

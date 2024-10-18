@@ -1,0 +1,16 @@
+apiVersion: federated_go_repository.crossplane.io/v1alpha1
+kind: GoRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federated_go_repository/v1alpha1/gorepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-go-repo
+  name: terraform-federated-test-go-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-go-repo
+    member:
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-go-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-go-repo-2

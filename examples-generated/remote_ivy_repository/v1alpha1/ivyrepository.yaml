@@ -1,0 +1,17 @@
+apiVersion: remote_ivy_repository.crossplane.io/v1alpha1
+kind: IvyRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_ivy_repository/v1alpha1/ivyrepository
+  labels:
+    testing.upbound.io/example-name: ivy-remote
+  name: ivy-remote
+spec:
+  forProvider:
+    fetchJarsEagerly: true
+    fetchSourcesEagerly: false
+    key: ivy-remote-foo
+    max_unique_snapshots: 10
+    rejectInvalidJars: true
+    suppressPomConsistencyChecks: true
+    url: https://repo1.maven.org/maven2/

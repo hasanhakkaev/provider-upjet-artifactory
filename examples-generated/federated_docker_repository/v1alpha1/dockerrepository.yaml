@@ -1,0 +1,16 @@
+apiVersion: federated_docker_repository.crossplane.io/v1alpha1
+kind: DockerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federated_docker_repository/v1alpha1/dockerrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-docker-repo
+  name: terraform-federated-test-docker-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-docker-repo
+    member:
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-docker-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-docker-repo-2

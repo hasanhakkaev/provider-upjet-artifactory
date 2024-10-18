@@ -1,0 +1,16 @@
+apiVersion: virtual_conda_repository.crossplane.io/v1alpha1
+kind: CondaRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtual_conda_repository/v1alpha1/condarepository
+  labels:
+    testing.upbound.io/example-name: foo-conda
+  name: foo-conda
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-conda
+    notes: Internal description
+    repositories: []

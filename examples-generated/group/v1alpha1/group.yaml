@@ -1,0 +1,16 @@
+apiVersion: group.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  annotations:
+    meta.upbound.io/example-id: group/v1alpha1/group
+  labels:
+    testing.upbound.io/example-name: test-group
+  name: test-group
+spec:
+  forProvider:
+    adminPrivileges: false
+    description: test group
+    externalId: 00628948-b509-4362-aa73-380c4dbd2a44
+    name: terraform
+    usersNames:
+    - foobar

@@ -1,0 +1,16 @@
+apiVersion: federated_alpine_repository.crossplane.io/v1alpha1
+kind: AlpineRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federated_alpine_repository/v1alpha1/alpinerepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-alpine-repo
+  name: terraform-federated-test-alpine-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-alpine-repo
+    member:
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-alpine-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-alpine-repo-2

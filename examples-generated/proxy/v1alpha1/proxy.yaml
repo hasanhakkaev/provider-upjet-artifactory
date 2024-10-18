@@ -1,0 +1,26 @@
+apiVersion: proxy.crossplane.io/v1alpha1
+kind: Proxy
+metadata:
+  annotations:
+    meta.upbound.io/example-id: proxy/v1alpha1/proxy
+  labels:
+    testing.upbound.io/example-name: my-proxy
+  name: my-proxy
+spec:
+  forProvider:
+    host: my-proxy.mycompany.com
+    key: my-proxy
+    ntDomain: MYCOMPANY
+    ntHost: MYCOMPANY.COM
+    passwordSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system
+    platformDefault: false
+    port: 8888
+    redirectToHosts:
+    - redirec-host.mycompany.com
+    services:
+    - jfrt
+    - jfxr
+    username: user1

@@ -1,0 +1,21 @@
+apiVersion: virtual_go_repository.crossplane.io/v1alpha1
+kind: GoRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtual_go_repository/v1alpha1/gorepository
+  labels:
+    testing.upbound.io/example-name: baz-go
+  name: baz-go
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    externalDependenciesEnabled: true
+    externalDependenciesPatterns:
+    - '**/github.com/**'
+    - '**/go.googlesource.com/**'
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: baz-go
+    notes: Internal description
+    repoLayoutRef: go-default
+    repositories: []

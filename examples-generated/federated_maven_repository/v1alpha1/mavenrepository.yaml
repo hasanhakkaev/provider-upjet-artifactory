@@ -1,0 +1,16 @@
+apiVersion: federated_maven_repository.crossplane.io/v1alpha1
+kind: MavenRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federated_maven_repository/v1alpha1/mavenrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-maven-repo
+  name: terraform-federated-test-maven-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-maven-repo
+    member:
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-maven-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-maven-repo-2

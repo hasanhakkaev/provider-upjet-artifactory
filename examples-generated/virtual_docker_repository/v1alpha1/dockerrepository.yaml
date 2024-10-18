@@ -1,0 +1,17 @@
+apiVersion: virtual_docker_repository.crossplane.io/v1alpha1
+kind: DockerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtual_docker_repository/v1alpha1/dockerrepository
+  labels:
+    testing.upbound.io/example-name: foo-docker
+  name: foo-docker
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-docker
+    notes: Internal description
+    repositories: []
+    resolveDockerTagsByTimestamp: true

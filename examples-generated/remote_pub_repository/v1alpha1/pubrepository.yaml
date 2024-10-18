@@ -1,0 +1,12 @@
+apiVersion: remote_pub_repository.crossplane.io/v1alpha1
+kind: PubRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_pub_repository/v1alpha1/pubrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-pub
+  name: my-remote-pub
+spec:
+  forProvider:
+    key: my-remote-pub
+    url: https://pub.dartlang.org

@@ -1,0 +1,12 @@
+apiVersion: remote_p2_repository.crossplane.io/v1alpha1
+kind: P2Repository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_p2_repository/v1alpha1/p2repository
+  labels:
+    testing.upbound.io/example-name: my-remote-p2
+  name: my-remote-p2
+spec:
+  forProvider:
+    key: my-remote-p2
+    url: http://testartifactory.io/artifactory/example-p2/

@@ -1,0 +1,19 @@
+apiVersion: ldap_group_setting.crossplane.io/v1alpha1
+kind: GroupSetting
+metadata:
+  annotations:
+    meta.upbound.io/example-id: ldap_group_setting/v1alpha1/groupsetting
+  labels:
+    testing.upbound.io/example-name: ldap_group_name
+  name: ldap-group-name
+spec:
+  forProvider:
+    descriptionAttribute: description
+    filter: (objectClass=groupOfNames)
+    groupBaseDn: ""
+    groupMemberAttribute: uniqueMember
+    groupNameAttribute: cn
+    ldapSettingKey: ldap_name
+    name: ldap_group_name
+    strategy: STATIC
+    subTree: true

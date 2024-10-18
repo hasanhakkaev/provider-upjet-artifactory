@@ -1,0 +1,16 @@
+apiVersion: federated_cocoapods_repository.crossplane.io/v1alpha1
+kind: CocoapodsRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federated_cocoapods_repository/v1alpha1/cocoapodsrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-cocoapods-repo
+  name: terraform-federated-test-cocoapods-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-cocoapods-repo
+    member:
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-cocoapods-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-cocoapods-repo-2

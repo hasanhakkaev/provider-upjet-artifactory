@@ -1,0 +1,16 @@
+apiVersion: federated_bower_repository.crossplane.io/v1alpha1
+kind: BowerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federated_bower_repository/v1alpha1/bowerrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-bower-repo
+  name: terraform-federated-test-bower-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-bower-repo
+    member:
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-bower-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-bower-repo-2

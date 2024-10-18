@@ -1,0 +1,11 @@
+apiVersion: local_conan_repository.crossplane.io/v1alpha1
+kind: ConanRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: local_conan_repository/v1alpha1/conanrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-conan-repo
+  name: terraform-local-test-conan-repo
+spec:
+  forProvider:
+    key: terraform-local-test-conan-repo

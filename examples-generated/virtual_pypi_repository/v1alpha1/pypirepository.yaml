@@ -1,0 +1,16 @@
+apiVersion: virtual_pypi_repository.crossplane.io/v1alpha1
+kind: PypiRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtual_pypi_repository/v1alpha1/pypirepository
+  labels:
+    testing.upbound.io/example-name: foo-pypi
+  name: foo-pypi
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-pypi
+    notes: Internal description
+    repositories: []

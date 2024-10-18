@@ -1,0 +1,22 @@
+apiVersion: keypair.crossplane.io/v1alpha1
+kind: Keypair
+metadata:
+  annotations:
+    meta.upbound.io/example-id: keypair/v1alpha1/keypair
+  labels:
+    testing.upbound.io/example-name: some-keypair-6543461672124900137
+  name: some-keypair-6543461672124900137
+spec:
+  forProvider:
+    alias: some-alias-6543461672124900137
+    pairName: some-keypair-6543461672124900137
+    pairType: RSA
+    passphraseSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system
+    privateKeySecretRef:
+      key: attribute.rsa.priv
+      name: example-secret
+      namespace: upbound-system
+    publicKey: ${file("samples/rsa.pub")}

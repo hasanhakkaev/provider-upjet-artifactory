@@ -1,0 +1,14 @@
+apiVersion: remote_terraform_repository.crossplane.io/v1alpha1
+kind: TerraformRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_terraform_repository/v1alpha1/terraformrepository
+  labels:
+    testing.upbound.io/example-name: terraform-remote
+  name: terraform-remote
+spec:
+  forProvider:
+    key: terraform-remote
+    terraformProvidersUrl: https://releases.hashicorp.com
+    terraformRegistryUrl: https://registry.terraform.io
+    url: https://github.com/

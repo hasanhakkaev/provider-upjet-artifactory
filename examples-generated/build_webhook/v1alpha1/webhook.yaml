@@ -1,0 +1,30 @@
+apiVersion: build_webhook.crossplane.io/v1alpha1
+kind: Webhook
+metadata:
+  annotations:
+    meta.upbound.io/example-id: build_webhook/v1alpha1/webhook
+  labels:
+    testing.upbound.io/example-name: build-webhook
+  name: build-webhook
+spec:
+  forProvider:
+    criteria:
+    - anyBuild: true
+      excludePatterns:
+      - bar/**
+      includePatterns:
+      - foo/**
+      selectedBuilds:
+      - build-id
+    eventTypes:
+    - uploaded
+    - deleted
+    - promoted
+    handler:
+    - customHttpHeaders:
+        header-1: value-1
+        header-2: value-2
+      proxy: proxy-key
+      secret: some-secret
+      url: http://tempurl.org/webhook
+    key: build-webhook

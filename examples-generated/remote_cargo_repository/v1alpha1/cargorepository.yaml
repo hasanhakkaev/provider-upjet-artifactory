@@ -1,0 +1,15 @@
+apiVersion: remote_cargo_repository.crossplane.io/v1alpha1
+kind: CargoRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remote_cargo_repository/v1alpha1/cargorepository
+  labels:
+    testing.upbound.io/example-name: my-remote-cargo
+  name: my-remote-cargo
+spec:
+  forProvider:
+    anonymousAccess: true
+    enableSparseIndex: true
+    gitRegistryUrl: https://github.com/rust-lang/foo.index
+    key: my-remote-cargo
+    url: https://github.com/rust-lang/crates.io-index

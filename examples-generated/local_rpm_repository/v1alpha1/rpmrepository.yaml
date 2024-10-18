@@ -1,0 +1,59 @@
+apiVersion: local_rpm_repository.crossplane.io/v1alpha1
+kind: RpmRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: local_rpm_repository/v1alpha1/rpmrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-rpm-repo-basic
+  name: terraform-local-test-rpm-repo-basic
+spec:
+  forProvider:
+    calculateYumMetadata: true
+    enableFileListsIndexing: true
+    key: terraform-local-test-rpm-repo-basic
+    primaryKeypairRef: ${artifactory_keypair.some-keypairGPG1.pair_name}
+    secondaryKeypairRef: ${artifactory_keypair.some-keypairGPG2.pair_name}
+    yumGroupFileNames: file-1.xml,file-2.xml
+    yumRootDepth: 5
+
+---
+
+apiVersion: keypair.crossplane.io/v1alpha1
+kind: Keypair
+metadata:
+  annotations:
+    meta.upbound.io/example-id: local_rpm_repository/v1alpha1/rpmrepository
+  labels:
+    testing.upbound.io/example-name: some-keypair-gpg-1
+  name: some-keypair-gpg-1
+spec:
+  forProvider:
+    alias: foo-alias1
+    pairName: some-keypair${random_id.randid.id}
+    pairType: GPG
+    privateKeySecretRef:
+      key: attribute.gpg.priv
+      name: example-secret
+      namespace: upbound-system
+    publicKey: ${file("samples/gpg.pub")}
+
+---
+
+apiVersion: keypair.crossplane.io/v1alpha1
+kind: Keypair
+metadata:
+  annotations:
+    meta.upbound.io/example-id: local_rpm_repository/v1alpha1/rpmrepository
+  labels:
+    testing.upbound.io/example-name: some-keypair-gpg-2
+  name: some-keypair-gpg-2
+spec:
+  forProvider:
+    alias: foo-alias2
+    pairName: some-keypair${random_id.randid.id}
+    pairType: GPG
+    privateKeySecretRef:
+      key: attribute.gpg.priv
+      name: example-secret
+      namespace: upbound-system
+    publicKey: ${file("samples/gpg.pub")}

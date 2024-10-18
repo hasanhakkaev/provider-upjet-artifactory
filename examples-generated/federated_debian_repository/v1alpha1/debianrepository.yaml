@@ -1,0 +1,16 @@
+apiVersion: federated_debian_repository.crossplane.io/v1alpha1
+kind: DebianRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federated_debian_repository/v1alpha1/debianrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-debian-repo
+  name: terraform-federated-test-debian-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-debian-repo
+    member:
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-debian-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-debian-repo-2

@@ -1,0 +1,31 @@
+apiVersion: artifactory.crossplane.io/v1alpha1
+kind: ReleaseBundleWebhook
+metadata:
+  annotations:
+    meta.upbound.io/example-id: artifactory/v1alpha1/releasebundlewebhook
+  labels:
+    testing.upbound.io/example-name: artifactory-release-bundle-webhook
+  name: artifactory-release-bundle-webhook
+spec:
+  forProvider:
+    criteria:
+    - anyReleaseBundle: false
+      excludePatterns:
+      - bar/**
+      includePatterns:
+      - foo/**
+      registeredReleaseBundleNames:
+      - bundle-name
+    eventTypes:
+    - received
+    - delete_started
+    - delete_completed
+    - delete_failed
+    handler:
+    - customHttpHeaders:
+        header-1: value-1
+        header-2: value-2
+      proxy: proxy-key
+      secret: some-secret
+      url: http://tempurl.org/webhook
+    key: artifactory-release-bundle-webhook

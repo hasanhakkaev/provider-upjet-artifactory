@@ -1,0 +1,11 @@
+apiVersion: local_conda_repository.crossplane.io/v1alpha1
+kind: CondaRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: local_conda_repository/v1alpha1/condarepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-conda-repo
+  name: terraform-local-test-conda-repo
+spec:
+  forProvider:
+    key: terraform-local-test-conda-repo
