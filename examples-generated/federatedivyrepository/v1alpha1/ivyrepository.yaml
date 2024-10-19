@@ -1,0 +1,16 @@
+apiVersion: federatedivyrepository.crossplane.io/v1alpha1
+kind: IvyRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedivyrepository/v1alpha1/ivyrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-ivy-repo
+  name: terraform-federated-test-ivy-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-ivy-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-ivy-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-ivy-repo-2

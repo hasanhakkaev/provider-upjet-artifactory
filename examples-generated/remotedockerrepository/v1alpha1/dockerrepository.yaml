@@ -1,0 +1,17 @@
+apiVersion: remotedockerrepository.crossplane.io/v1alpha1
+kind: DockerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotedockerrepository/v1alpha1/dockerrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-docker
+  name: my-remote-docker
+spec:
+  forProvider:
+    blockPushingSchema1: true
+    enableTokenAuthentication: true
+    externalDependenciesEnabled: true
+    externalDependenciesPatterns:
+      - '**/registry-1.docker.io/**'
+    key: my-remote-docker
+    url: https://registry-1.docker.io/

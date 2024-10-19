@@ -1,0 +1,37 @@
+apiVersion: distributioncustomwebhook.crossplane.io/v1alpha1
+kind: CustomWebhook
+metadata:
+  annotations:
+    meta.upbound.io/example-id: distributioncustomwebhook/v1alpha1/customwebhook
+  labels:
+    testing.upbound.io/example-name: distribution-custom-webhook
+  name: distribution-custom-webhook
+spec:
+  forProvider:
+    criteria:
+      - anyReleaseBundle: false
+        excludePatterns:
+          - bar/**
+        includePatterns:
+          - foo/**
+        registeredReleaseBundleNames:
+          - bundle-name
+    eventTypes:
+      - distribute_started
+      - distribute_completed
+      - distribute_aborted
+      - distribute_failed
+      - delete_started
+      - delete_completed
+      - delete_failed
+    handler:
+      - httpHeaders:
+          headerName1: value1
+          headerName2: value2
+        payload: '{ "ref": "main" , "inputs": { "artifact_path": "test-repo/repo-path"
+        } }'
+        secrets:
+          secretName1: value1
+          secretName2: value2
+        url: https://tempurl.org
+    key: distribution-custom-webhook

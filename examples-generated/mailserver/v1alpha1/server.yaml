@@ -1,0 +1,20 @@
+apiVersion: mailserver.crossplane.io/v1alpha1
+kind: Server
+metadata:
+  annotations:
+    meta.upbound.io/example-id: mailserver/v1alpha1/server
+  labels:
+    testing.upbound.io/example-name: mymailserver
+  name: mymailserver
+spec:
+  forProvider:
+    artifactoryUrl: http://tempurl.org
+    enabled: true
+    from: test@jfrog.com
+    host: http://tempurl.org
+    password: test-password
+    port: 25
+    subjectPrefix: '[Test]'
+    useSsl: true
+    useTls: true
+    username: test-user

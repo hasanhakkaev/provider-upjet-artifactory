@@ -1,0 +1,13 @@
+apiVersion: localdockerv2repository.crossplane.io/v1alpha1
+kind: DockerV2Repository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localdockerv2repository/v1alpha1/dockerv2repository
+  labels:
+    testing.upbound.io/example-name: foo
+  name: foo
+spec:
+  forProvider:
+    key: foo
+    maxUniqueTags: 5
+    tagRetention: 3

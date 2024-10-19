@@ -1,0 +1,11 @@
+apiVersion: globalenvironment.crossplane.io/v1alpha1
+kind: Environment
+metadata:
+  annotations:
+    meta.upbound.io/example-id: globalenvironment/v1alpha1/environment
+  labels:
+    testing.upbound.io/example-name: test-env
+  name: test-env
+spec:
+  forProvider:
+    name: test-env

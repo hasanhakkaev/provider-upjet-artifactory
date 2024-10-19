@@ -1,0 +1,17 @@
+apiVersion: localmavenrepository.crossplane.io/v1alpha1
+kind: MavenRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localmavenrepository/v1alpha1/mavenrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-maven-repo-basic
+  name: terraform-local-test-maven-repo-basic
+spec:
+  forProvider:
+    checksumPolicyType: client-checksums
+    handleReleases: true
+    handleSnapshots: true
+    key: terraform-local-test-maven-repo-basic
+    maxUniqueSnapshots: 10
+    snapshotVersionBehavior: unique
+    suppressPomConsistencyChecks: false

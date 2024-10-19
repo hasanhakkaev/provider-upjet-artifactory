@@ -1,0 +1,12 @@
+apiVersion: remotepuppetrepository.crossplane.io/v1alpha1
+kind: PuppetRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotepuppetrepository/v1alpha1/puppetrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-puppet
+  name: my-remote-puppet
+spec:
+  forProvider:
+    key: my-remote-puppet
+    url: https://forgeapi.puppetlabs.com/

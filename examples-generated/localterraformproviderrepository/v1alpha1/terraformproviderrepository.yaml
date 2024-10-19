@@ -1,0 +1,11 @@
+apiVersion: localterraformproviderrepository.crossplane.io/v1alpha1
+kind: TerraformProviderRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localterraformproviderrepository/v1alpha1/terraformproviderrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-terraform-provider-repo
+  name: terraform-local-test-terraform-provider-repo
+spec:
+  forProvider:
+    key: terraform-local-test-terraform-provider-repo

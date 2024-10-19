@@ -16,7 +16,7 @@ spec:
 
 ---
 
-apiVersion: remote_maven_repository.crossplane.io/v1alpha1
+apiVersion: remotemavenrepository.crossplane.io/v1alpha1
 kind: MavenRepository
 metadata:
   annotations:

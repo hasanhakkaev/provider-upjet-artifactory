@@ -1,0 +1,11 @@
+apiVersion: localnpmrepository.crossplane.io/v1alpha1
+kind: NpmRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localnpmrepository/v1alpha1/npmrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-npm-repo
+  name: terraform-local-test-npm-repo
+spec:
+  forProvider:
+    key: terraform-local-test-npm-repo

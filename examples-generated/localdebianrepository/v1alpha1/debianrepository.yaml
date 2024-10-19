@@ -1,0 +1,60 @@
+apiVersion: localdebianrepository.crossplane.io/v1alpha1
+kind: DebianRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localdebianrepository/v1alpha1/debianrepository
+  labels:
+    testing.upbound.io/example-name: my-debian-repo
+  name: my-debian-repo
+spec:
+  forProvider:
+    indexCompressionFormats:
+      - bz2
+      - lzma
+      - xz
+    key: my-debian-repo
+    primaryKeypairRef: ${artifactory_keypair.some-keypairGPG1.pair_name}
+    secondaryKeypairRef: ${artifactory_keypair.some-keypairGPG2.pair_name}
+    trivialLayout: true
+
+---
+
+apiVersion: keypair.crossplane.io/v1alpha1
+kind: Keypair
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localdebianrepository/v1alpha1/debianrepository
+  labels:
+    testing.upbound.io/example-name: some-keypairGPG1
+  name: some-keypairgpg1
+spec:
+  forProvider:
+    alias: foo-alias1
+    pairName: some-keypair${random_id.randid.id}
+    pairType: GPG
+    privateKeySecretRef:
+      key: attribute.gpg.priv
+      name: example-secret
+      namespace: upbound-system
+    publicKey: ${file("samples/gpg.pub")}
+
+---
+
+apiVersion: keypair.crossplane.io/v1alpha1
+kind: Keypair
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localdebianrepository/v1alpha1/debianrepository
+  labels:
+    testing.upbound.io/example-name: some-keypairGPG2
+  name: some-keypairgpg2
+spec:
+  forProvider:
+    alias: foo-alias2
+    pairName: some-keypair4${random_id.randid.id}
+    pairType: GPG
+    privateKeySecretRef:
+      key: attribute.gpg.priv
+      name: example-secret
+      namespace: upbound-system
+    publicKey: ${file("samples/gpg.pub")}

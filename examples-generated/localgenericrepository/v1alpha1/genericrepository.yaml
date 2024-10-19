@@ -1,0 +1,11 @@
+apiVersion: localgenericrepository.crossplane.io/v1alpha1
+kind: GenericRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localgenericrepository/v1alpha1/genericrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-generic-repo
+  name: terraform-local-test-generic-repo
+spec:
+  forProvider:
+    key: terraform-local-test-generic-repo

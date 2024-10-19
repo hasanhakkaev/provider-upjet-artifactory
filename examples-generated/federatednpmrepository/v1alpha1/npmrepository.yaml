@@ -1,0 +1,16 @@
+apiVersion: federatednpmrepository.crossplane.io/v1alpha1
+kind: NpmRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatednpmrepository/v1alpha1/npmrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-npm-repo
+  name: terraform-federated-test-npm-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-npm-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-npm-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-npm-repo-2

@@ -1,0 +1,16 @@
+apiVersion: virtualgitlfsrepository.crossplane.io/v1alpha1
+kind: GitlfsRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualgitlfsrepository/v1alpha1/gitlfsrepository
+  labels:
+    testing.upbound.io/example-name: foo-gitlfs
+  name: foo-gitlfs
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-gitlfs
+    notes: Internal description
+    repositories: [ ]

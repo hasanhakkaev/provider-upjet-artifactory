@@ -1,0 +1,12 @@
+apiVersion: remotegemsrepository.crossplane.io/v1alpha1
+kind: GemsRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotegemsrepository/v1alpha1/gemsrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-gems
+  name: my-remote-gems
+spec:
+  forProvider:
+    key: my-remote-gems
+    url: https://rubygems.org/

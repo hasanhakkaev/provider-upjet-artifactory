@@ -1,0 +1,11 @@
+apiVersion: localbowerrepository.crossplane.io/v1alpha1
+kind: BowerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localbowerrepository/v1alpha1/bowerrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-bower-repo
+  name: terraform-local-test-bower-repo
+spec:
+  forProvider:
+    key: terraform-local-test-bower-repo

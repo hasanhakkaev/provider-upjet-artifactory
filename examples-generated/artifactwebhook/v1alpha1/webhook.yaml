@@ -1,0 +1,47 @@
+apiVersion: artifactwebhook.crossplane.io/v1alpha1
+kind: Webhook
+metadata:
+  annotations:
+    meta.upbound.io/example-id: artifactwebhook/v1alpha1/webhook
+  labels:
+    testing.upbound.io/example-name: artifact-webhook
+  name: artifact-webhook
+spec:
+  forProvider:
+    criteria:
+      - any_federated: false
+        anyLocal: true
+        anyRemote: false
+        excludePatterns:
+          - bar/**
+        includePatterns:
+          - foo/**
+        repoKeys:
+          - ${artifactory_local_generic_repository.my-generic-local.key}
+    eventTypes:
+      - deployed
+      - deleted
+      - moved
+      - copied
+    handler:
+      - customHttpHeaders:
+          header-1: value-1
+          header-2: value-2
+        proxy: proxy-key
+        secret: some-secret
+        url: http://tempurl.org/webhook
+    key: artifact-webhook
+
+---
+
+apiVersion: localgenericrepository.crossplane.io/v1alpha1
+kind: GenericRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: artifactwebhook/v1alpha1/webhook
+  labels:
+    testing.upbound.io/example-name: my-generic-local
+  name: my-generic-local
+spec:
+  forProvider:
+    key: my-generic-local

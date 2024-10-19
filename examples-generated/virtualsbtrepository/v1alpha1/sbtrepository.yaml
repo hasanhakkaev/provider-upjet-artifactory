@@ -1,0 +1,17 @@
+apiVersion: virtualsbtrepository.crossplane.io/v1alpha1
+kind: SbtRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualsbtrepository/v1alpha1/sbtrepository
+  labels:
+    testing.upbound.io/example-name: foo-sbt
+  name: foo-sbt
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-sbt
+    notes: Internal description
+    pomRepositoryReferencesCleanupPolicy: discard_active_reference
+    repositories: [ ]

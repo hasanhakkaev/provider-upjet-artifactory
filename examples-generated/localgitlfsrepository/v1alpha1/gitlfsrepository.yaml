@@ -1,0 +1,11 @@
+apiVersion: localgitlfsrepository.crossplane.io/v1alpha1
+kind: GitlfsRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localgitlfsrepository/v1alpha1/gitlfsrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-gitlfs-repo
+  name: terraform-local-test-gitlfs-repo
+spec:
+  forProvider:
+    key: terraform-local-test-gitlfs-repo

@@ -1,0 +1,16 @@
+apiVersion: virtualterraformrepository.crossplane.io/v1alpha1
+kind: TerraformRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualterraformrepository/v1alpha1/terraformrepository
+  labels:
+    testing.upbound.io/example-name: terraform-virtual
+  name: terraform-virtual
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: terraform-remote
+    notes: Internal description
+    repositories: [ ]

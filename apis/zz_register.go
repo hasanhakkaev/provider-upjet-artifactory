@@ -10,335 +10,353 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/upbound/provider-artifactory/apis/anonymous/v1alpha1"
-	v1alpha1artifact_custom_webhook "github.com/upbound/provider-artifactory/apis/artifact_custom_webhook/v1alpha1"
-	v1alpha1artifact_property_custom_webhook "github.com/upbound/provider-artifactory/apis/artifact_property_custom_webhook/v1alpha1"
-	v1alpha1artifact_property_webhook "github.com/upbound/provider-artifactory/apis/artifact_property_webhook/v1alpha1"
-	v1alpha1artifact_webhook "github.com/upbound/provider-artifactory/apis/artifact_webhook/v1alpha1"
+	v1alpha1 "github.com/upbound/provider-artifactory/apis/access/v1alpha1"
+	v1alpha1anonymous "github.com/upbound/provider-artifactory/apis/anonymous/v1alpha1"
+	v1alpha1api "github.com/upbound/provider-artifactory/apis/api/v1alpha1"
+	v1alpha1artifactcustomwebhook "github.com/upbound/provider-artifactory/apis/artifactcustomwebhook/v1alpha1"
 	v1alpha1artifactory "github.com/upbound/provider-artifactory/apis/artifactory/v1alpha1"
+	v1alpha1artifactpropertycustomwebhook "github.com/upbound/provider-artifactory/apis/artifactpropertycustomwebhook/v1alpha1"
+	v1alpha1artifactpropertywebhook "github.com/upbound/provider-artifactory/apis/artifactpropertywebhook/v1alpha1"
+	v1alpha1artifactwebhook "github.com/upbound/provider-artifactory/apis/artifactwebhook/v1alpha1"
 	v1alpha1backup "github.com/upbound/provider-artifactory/apis/backup/v1alpha1"
-	v1alpha1build_custom_webhook "github.com/upbound/provider-artifactory/apis/build_custom_webhook/v1alpha1"
-	v1alpha1build_webhook "github.com/upbound/provider-artifactory/apis/build_webhook/v1alpha1"
+	v1alpha1buildcustomwebhook "github.com/upbound/provider-artifactory/apis/buildcustomwebhook/v1alpha1"
+	v1alpha1buildwebhook "github.com/upbound/provider-artifactory/apis/buildwebhook/v1alpha1"
 	v1alpha1certificate "github.com/upbound/provider-artifactory/apis/certificate/v1alpha1"
-	v1alpha1distribution_custom_webhook "github.com/upbound/provider-artifactory/apis/distribution_custom_webhook/v1alpha1"
-	v1alpha1distribution_public_key "github.com/upbound/provider-artifactory/apis/distribution_public_key/v1alpha1"
-	v1alpha1distribution_webhook "github.com/upbound/provider-artifactory/apis/distribution_webhook/v1alpha1"
-	v1alpha1docker_custom_webhook "github.com/upbound/provider-artifactory/apis/docker_custom_webhook/v1alpha1"
-	v1alpha1docker_webhook "github.com/upbound/provider-artifactory/apis/docker_webhook/v1alpha1"
-	v1alpha1federated_alpine_repository "github.com/upbound/provider-artifactory/apis/federated_alpine_repository/v1alpha1"
-	v1alpha1federated_bower_repository "github.com/upbound/provider-artifactory/apis/federated_bower_repository/v1alpha1"
-	v1alpha1federated_cargo_repository "github.com/upbound/provider-artifactory/apis/federated_cargo_repository/v1alpha1"
-	v1alpha1federated_chef_repository "github.com/upbound/provider-artifactory/apis/federated_chef_repository/v1alpha1"
-	v1alpha1federated_cocoapods_repository "github.com/upbound/provider-artifactory/apis/federated_cocoapods_repository/v1alpha1"
-	v1alpha1federated_composer_repository "github.com/upbound/provider-artifactory/apis/federated_composer_repository/v1alpha1"
-	v1alpha1federated_conan_repository "github.com/upbound/provider-artifactory/apis/federated_conan_repository/v1alpha1"
-	v1alpha1federated_conda_repository "github.com/upbound/provider-artifactory/apis/federated_conda_repository/v1alpha1"
-	v1alpha1federated_cran_repository "github.com/upbound/provider-artifactory/apis/federated_cran_repository/v1alpha1"
-	v1alpha1federated_debian_repository "github.com/upbound/provider-artifactory/apis/federated_debian_repository/v1alpha1"
-	v1alpha1federated_docker_repository "github.com/upbound/provider-artifactory/apis/federated_docker_repository/v1alpha1"
-	v1alpha1federated_docker_v1_repository "github.com/upbound/provider-artifactory/apis/federated_docker_v1_repository/v1alpha1"
-	v1alpha1federated_docker_v2_repository "github.com/upbound/provider-artifactory/apis/federated_docker_v2_repository/v1alpha1"
-	v1alpha1federated_gems_repository "github.com/upbound/provider-artifactory/apis/federated_gems_repository/v1alpha1"
-	v1alpha1federated_generic_repository "github.com/upbound/provider-artifactory/apis/federated_generic_repository/v1alpha1"
-	v1alpha1federated_gitlfs_repository "github.com/upbound/provider-artifactory/apis/federated_gitlfs_repository/v1alpha1"
-	v1alpha1federated_go_repository "github.com/upbound/provider-artifactory/apis/federated_go_repository/v1alpha1"
-	v1alpha1federated_gradle_repository "github.com/upbound/provider-artifactory/apis/federated_gradle_repository/v1alpha1"
-	v1alpha1federated_helm_repository "github.com/upbound/provider-artifactory/apis/federated_helm_repository/v1alpha1"
-	v1alpha1federated_ivy_repository "github.com/upbound/provider-artifactory/apis/federated_ivy_repository/v1alpha1"
-	v1alpha1federated_maven_repository "github.com/upbound/provider-artifactory/apis/federated_maven_repository/v1alpha1"
-	v1alpha1federated_npm_repository "github.com/upbound/provider-artifactory/apis/federated_npm_repository/v1alpha1"
-	v1alpha1federated_nuget_repository "github.com/upbound/provider-artifactory/apis/federated_nuget_repository/v1alpha1"
-	v1alpha1federated_opkg_repository "github.com/upbound/provider-artifactory/apis/federated_opkg_repository/v1alpha1"
-	v1alpha1federated_puppet_repository "github.com/upbound/provider-artifactory/apis/federated_puppet_repository/v1alpha1"
-	v1alpha1federated_pypi_repository "github.com/upbound/provider-artifactory/apis/federated_pypi_repository/v1alpha1"
-	v1alpha1federated_rpm_repository "github.com/upbound/provider-artifactory/apis/federated_rpm_repository/v1alpha1"
-	v1alpha1federated_sbt_repository "github.com/upbound/provider-artifactory/apis/federated_sbt_repository/v1alpha1"
-	v1alpha1federated_swift_repository "github.com/upbound/provider-artifactory/apis/federated_swift_repository/v1alpha1"
-	v1alpha1federated_terraform_module_repository "github.com/upbound/provider-artifactory/apis/federated_terraform_module_repository/v1alpha1"
-	v1alpha1federated_terraform_provider_repository "github.com/upbound/provider-artifactory/apis/federated_terraform_provider_repository/v1alpha1"
-	v1alpha1federated_vagrant_repository "github.com/upbound/provider-artifactory/apis/federated_vagrant_repository/v1alpha1"
-	v1alpha1general_security "github.com/upbound/provider-artifactory/apis/general_security/v1alpha1"
-	v1alpha1global_environment "github.com/upbound/provider-artifactory/apis/global_environment/v1alpha1"
+	v1alpha1distributioncustomwebhook "github.com/upbound/provider-artifactory/apis/distributioncustomwebhook/v1alpha1"
+	v1alpha1distributionpublickey "github.com/upbound/provider-artifactory/apis/distributionpublickey/v1alpha1"
+	v1alpha1distributionwebhook "github.com/upbound/provider-artifactory/apis/distributionwebhook/v1alpha1"
+	v1alpha1dockercustomwebhook "github.com/upbound/provider-artifactory/apis/dockercustomwebhook/v1alpha1"
+	v1alpha1dockerwebhook "github.com/upbound/provider-artifactory/apis/dockerwebhook/v1alpha1"
+	v1alpha1federatedalpinerepository "github.com/upbound/provider-artifactory/apis/federatedalpinerepository/v1alpha1"
+	v1alpha1federatedbowerrepository "github.com/upbound/provider-artifactory/apis/federatedbowerrepository/v1alpha1"
+	v1alpha1federatedcargorepository "github.com/upbound/provider-artifactory/apis/federatedcargorepository/v1alpha1"
+	v1alpha1federatedchefrepository "github.com/upbound/provider-artifactory/apis/federatedchefrepository/v1alpha1"
+	v1alpha1federatedcocoapodsrepository "github.com/upbound/provider-artifactory/apis/federatedcocoapodsrepository/v1alpha1"
+	v1alpha1federatedcomposerrepository "github.com/upbound/provider-artifactory/apis/federatedcomposerrepository/v1alpha1"
+	v1alpha1federatedconanrepository "github.com/upbound/provider-artifactory/apis/federatedconanrepository/v1alpha1"
+	v1alpha1federatedcondarepository "github.com/upbound/provider-artifactory/apis/federatedcondarepository/v1alpha1"
+	v1alpha1federatedcranrepository "github.com/upbound/provider-artifactory/apis/federatedcranrepository/v1alpha1"
+	v1alpha1federateddebianrepository "github.com/upbound/provider-artifactory/apis/federateddebianrepository/v1alpha1"
+	v1alpha1federateddockerv1repository "github.com/upbound/provider-artifactory/apis/federateddockerv1repository/v1alpha1"
+	v1alpha1federateddockerv2repository "github.com/upbound/provider-artifactory/apis/federateddockerv2repository/v1alpha1"
+	v1alpha1federatedgemsrepository "github.com/upbound/provider-artifactory/apis/federatedgemsrepository/v1alpha1"
+	v1alpha1federatedgenericrepository "github.com/upbound/provider-artifactory/apis/federatedgenericrepository/v1alpha1"
+	v1alpha1federatedgitlfsrepository "github.com/upbound/provider-artifactory/apis/federatedgitlfsrepository/v1alpha1"
+	v1alpha1federatedgorepository "github.com/upbound/provider-artifactory/apis/federatedgorepository/v1alpha1"
+	v1alpha1federatedgradlerepository "github.com/upbound/provider-artifactory/apis/federatedgradlerepository/v1alpha1"
+	v1alpha1federatedhelmrepository "github.com/upbound/provider-artifactory/apis/federatedhelmrepository/v1alpha1"
+	v1alpha1federatedivyrepository "github.com/upbound/provider-artifactory/apis/federatedivyrepository/v1alpha1"
+	v1alpha1federatedmavenrepository "github.com/upbound/provider-artifactory/apis/federatedmavenrepository/v1alpha1"
+	v1alpha1federatednpmrepository "github.com/upbound/provider-artifactory/apis/federatednpmrepository/v1alpha1"
+	v1alpha1federatednugetrepository "github.com/upbound/provider-artifactory/apis/federatednugetrepository/v1alpha1"
+	v1alpha1federatedopkgrepository "github.com/upbound/provider-artifactory/apis/federatedopkgrepository/v1alpha1"
+	v1alpha1federatedpuppetrepository "github.com/upbound/provider-artifactory/apis/federatedpuppetrepository/v1alpha1"
+	v1alpha1federatedpypirepository "github.com/upbound/provider-artifactory/apis/federatedpypirepository/v1alpha1"
+	v1alpha1federatedrpmrepository "github.com/upbound/provider-artifactory/apis/federatedrpmrepository/v1alpha1"
+	v1alpha1federatedsbtrepository "github.com/upbound/provider-artifactory/apis/federatedsbtrepository/v1alpha1"
+	v1alpha1federatedswiftrepository "github.com/upbound/provider-artifactory/apis/federatedswiftrepository/v1alpha1"
+	v1alpha1federatedterraformmodulerepository "github.com/upbound/provider-artifactory/apis/federatedterraformmodulerepository/v1alpha1"
+	v1alpha1federatedterraformproviderrepository "github.com/upbound/provider-artifactory/apis/federatedterraformproviderrepository/v1alpha1"
+	v1alpha1federatedvagrantrepository "github.com/upbound/provider-artifactory/apis/federatedvagrantrepository/v1alpha1"
+	v1alpha1generalsecurity "github.com/upbound/provider-artifactory/apis/generalsecurity/v1alpha1"
+	v1alpha1globalenvironment "github.com/upbound/provider-artifactory/apis/globalenvironment/v1alpha1"
 	v1alpha1group "github.com/upbound/provider-artifactory/apis/group/v1alpha1"
 	v1alpha1keypair "github.com/upbound/provider-artifactory/apis/keypair/v1alpha1"
-	v1alpha1ldap_group_setting "github.com/upbound/provider-artifactory/apis/ldap_group_setting/v1alpha1"
-	v1alpha1ldap_group_setting_v2 "github.com/upbound/provider-artifactory/apis/ldap_group_setting_v2/v1alpha1"
-	v1alpha1ldap_setting "github.com/upbound/provider-artifactory/apis/ldap_setting/v1alpha1"
-	v1alpha1ldap_setting_v2 "github.com/upbound/provider-artifactory/apis/ldap_setting_v2/v1alpha1"
-	v1alpha1local_alpine_repository "github.com/upbound/provider-artifactory/apis/local_alpine_repository/v1alpha1"
-	v1alpha1local_bower_repository "github.com/upbound/provider-artifactory/apis/local_bower_repository/v1alpha1"
-	v1alpha1local_cargo_repository "github.com/upbound/provider-artifactory/apis/local_cargo_repository/v1alpha1"
-	v1alpha1local_chef_repository "github.com/upbound/provider-artifactory/apis/local_chef_repository/v1alpha1"
-	v1alpha1local_cocoapods_repository "github.com/upbound/provider-artifactory/apis/local_cocoapods_repository/v1alpha1"
-	v1alpha1local_composer_repository "github.com/upbound/provider-artifactory/apis/local_composer_repository/v1alpha1"
-	v1alpha1local_conan_repository "github.com/upbound/provider-artifactory/apis/local_conan_repository/v1alpha1"
-	v1alpha1local_conda_repository "github.com/upbound/provider-artifactory/apis/local_conda_repository/v1alpha1"
-	v1alpha1local_cran_repository "github.com/upbound/provider-artifactory/apis/local_cran_repository/v1alpha1"
-	v1alpha1local_debian_repository "github.com/upbound/provider-artifactory/apis/local_debian_repository/v1alpha1"
-	v1alpha1local_docker_v1_repository "github.com/upbound/provider-artifactory/apis/local_docker_v1_repository/v1alpha1"
-	v1alpha1local_docker_v2_repository "github.com/upbound/provider-artifactory/apis/local_docker_v2_repository/v1alpha1"
-	v1alpha1local_gems_repository "github.com/upbound/provider-artifactory/apis/local_gems_repository/v1alpha1"
-	v1alpha1local_generic_repository "github.com/upbound/provider-artifactory/apis/local_generic_repository/v1alpha1"
-	v1alpha1local_gitlfs_repository "github.com/upbound/provider-artifactory/apis/local_gitlfs_repository/v1alpha1"
-	v1alpha1local_go_repository "github.com/upbound/provider-artifactory/apis/local_go_repository/v1alpha1"
-	v1alpha1local_gradle_repository "github.com/upbound/provider-artifactory/apis/local_gradle_repository/v1alpha1"
-	v1alpha1local_helm_repository "github.com/upbound/provider-artifactory/apis/local_helm_repository/v1alpha1"
-	v1alpha1local_huggingfaceml_repository "github.com/upbound/provider-artifactory/apis/local_huggingfaceml_repository/v1alpha1"
-	v1alpha1local_ivy_repository "github.com/upbound/provider-artifactory/apis/local_ivy_repository/v1alpha1"
-	v1alpha1local_maven_repository "github.com/upbound/provider-artifactory/apis/local_maven_repository/v1alpha1"
-	v1alpha1local_npm_repository "github.com/upbound/provider-artifactory/apis/local_npm_repository/v1alpha1"
-	v1alpha1local_nuget_repository "github.com/upbound/provider-artifactory/apis/local_nuget_repository/v1alpha1"
-	v1alpha1local_opkg_repository "github.com/upbound/provider-artifactory/apis/local_opkg_repository/v1alpha1"
-	v1alpha1local_pub_repository "github.com/upbound/provider-artifactory/apis/local_pub_repository/v1alpha1"
-	v1alpha1local_puppet_repository "github.com/upbound/provider-artifactory/apis/local_puppet_repository/v1alpha1"
-	v1alpha1local_pypi_repository "github.com/upbound/provider-artifactory/apis/local_pypi_repository/v1alpha1"
-	v1alpha1local_repository_multi_replication "github.com/upbound/provider-artifactory/apis/local_repository_multi_replication/v1alpha1"
-	v1alpha1local_repository_single_replication "github.com/upbound/provider-artifactory/apis/local_repository_single_replication/v1alpha1"
-	v1alpha1local_rpm_repository "github.com/upbound/provider-artifactory/apis/local_rpm_repository/v1alpha1"
-	v1alpha1local_sbt_repository "github.com/upbound/provider-artifactory/apis/local_sbt_repository/v1alpha1"
-	v1alpha1local_swift_repository "github.com/upbound/provider-artifactory/apis/local_swift_repository/v1alpha1"
-	v1alpha1local_terraform_module_repository "github.com/upbound/provider-artifactory/apis/local_terraform_module_repository/v1alpha1"
-	v1alpha1local_terraform_provider_repository "github.com/upbound/provider-artifactory/apis/local_terraform_provider_repository/v1alpha1"
-	v1alpha1local_terraformbackend_repository "github.com/upbound/provider-artifactory/apis/local_terraformbackend_repository/v1alpha1"
-	v1alpha1local_vagrant_repository "github.com/upbound/provider-artifactory/apis/local_vagrant_repository/v1alpha1"
-	v1alpha1mail_server "github.com/upbound/provider-artifactory/apis/mail_server/v1alpha1"
-	v1alpha1managed_user "github.com/upbound/provider-artifactory/apis/managed_user/v1alpha1"
-	v1alpha1oauth_settings "github.com/upbound/provider-artifactory/apis/oauth_settings/v1alpha1"
-	v1alpha1property_set "github.com/upbound/provider-artifactory/apis/property_set/v1alpha1"
+	v1alpha1ldapgroupsetting "github.com/upbound/provider-artifactory/apis/ldapgroupsetting/v1alpha1"
+	v1alpha1ldapgroupsettingv2 "github.com/upbound/provider-artifactory/apis/ldapgroupsettingv2/v1alpha1"
+	v1alpha1ldapsetting "github.com/upbound/provider-artifactory/apis/ldapsetting/v1alpha1"
+	v1alpha1ldapsettingv2 "github.com/upbound/provider-artifactory/apis/ldapsettingv2/v1alpha1"
+	v1alpha1localalpinerepository "github.com/upbound/provider-artifactory/apis/localalpinerepository/v1alpha1"
+	v1alpha1localbowerrepository "github.com/upbound/provider-artifactory/apis/localbowerrepository/v1alpha1"
+	v1alpha1localcargorepository "github.com/upbound/provider-artifactory/apis/localcargorepository/v1alpha1"
+	v1alpha1localchefrepository "github.com/upbound/provider-artifactory/apis/localchefrepository/v1alpha1"
+	v1alpha1localcocoapodsrepository "github.com/upbound/provider-artifactory/apis/localcocoapodsrepository/v1alpha1"
+	v1alpha1localcomposerrepository "github.com/upbound/provider-artifactory/apis/localcomposerrepository/v1alpha1"
+	v1alpha1localconanrepository "github.com/upbound/provider-artifactory/apis/localconanrepository/v1alpha1"
+	v1alpha1localcondarepository "github.com/upbound/provider-artifactory/apis/localcondarepository/v1alpha1"
+	v1alpha1localcranrepository "github.com/upbound/provider-artifactory/apis/localcranrepository/v1alpha1"
+	v1alpha1localdebianrepository "github.com/upbound/provider-artifactory/apis/localdebianrepository/v1alpha1"
+	v1alpha1localdockerv1repository "github.com/upbound/provider-artifactory/apis/localdockerv1repository/v1alpha1"
+	v1alpha1localdockerv2repository "github.com/upbound/provider-artifactory/apis/localdockerv2repository/v1alpha1"
+	v1alpha1localgemsrepository "github.com/upbound/provider-artifactory/apis/localgemsrepository/v1alpha1"
+	v1alpha1localgenericrepository "github.com/upbound/provider-artifactory/apis/localgenericrepository/v1alpha1"
+	v1alpha1localgitlfsrepository "github.com/upbound/provider-artifactory/apis/localgitlfsrepository/v1alpha1"
+	v1alpha1localgorepository "github.com/upbound/provider-artifactory/apis/localgorepository/v1alpha1"
+	v1alpha1localgradlerepository "github.com/upbound/provider-artifactory/apis/localgradlerepository/v1alpha1"
+	v1alpha1localhelmrepository "github.com/upbound/provider-artifactory/apis/localhelmrepository/v1alpha1"
+	v1alpha1localhuggingfacemlrepository "github.com/upbound/provider-artifactory/apis/localhuggingfacemlrepository/v1alpha1"
+	v1alpha1localivyrepository "github.com/upbound/provider-artifactory/apis/localivyrepository/v1alpha1"
+	v1alpha1localmavenrepository "github.com/upbound/provider-artifactory/apis/localmavenrepository/v1alpha1"
+	v1alpha1localnpmrepository "github.com/upbound/provider-artifactory/apis/localnpmrepository/v1alpha1"
+	v1alpha1localnugetrepository "github.com/upbound/provider-artifactory/apis/localnugetrepository/v1alpha1"
+	v1alpha1localopkgrepository "github.com/upbound/provider-artifactory/apis/localopkgrepository/v1alpha1"
+	v1alpha1localpubrepository "github.com/upbound/provider-artifactory/apis/localpubrepository/v1alpha1"
+	v1alpha1localpuppetrepository "github.com/upbound/provider-artifactory/apis/localpuppetrepository/v1alpha1"
+	v1alpha1localpypirepository "github.com/upbound/provider-artifactory/apis/localpypirepository/v1alpha1"
+	v1alpha1localrepositorymultireplication "github.com/upbound/provider-artifactory/apis/localrepositorymultireplication/v1alpha1"
+	v1alpha1localrepositorysinglereplication "github.com/upbound/provider-artifactory/apis/localrepositorysinglereplication/v1alpha1"
+	v1alpha1localrpmrepository "github.com/upbound/provider-artifactory/apis/localrpmrepository/v1alpha1"
+	v1alpha1localsbtrepository "github.com/upbound/provider-artifactory/apis/localsbtrepository/v1alpha1"
+	v1alpha1localswiftrepository "github.com/upbound/provider-artifactory/apis/localswiftrepository/v1alpha1"
+	v1alpha1localterraformbackendrepository "github.com/upbound/provider-artifactory/apis/localterraformbackendrepository/v1alpha1"
+	v1alpha1localterraformmodulerepository "github.com/upbound/provider-artifactory/apis/localterraformmodulerepository/v1alpha1"
+	v1alpha1localterraformproviderrepository "github.com/upbound/provider-artifactory/apis/localterraformproviderrepository/v1alpha1"
+	v1alpha1localvagrantrepository "github.com/upbound/provider-artifactory/apis/localvagrantrepository/v1alpha1"
+	v1alpha1mailserver "github.com/upbound/provider-artifactory/apis/mailserver/v1alpha1"
+	v1alpha1manageduser "github.com/upbound/provider-artifactory/apis/manageduser/v1alpha1"
+	v1alpha1oauthsettings "github.com/upbound/provider-artifactory/apis/oauthsettings/v1alpha1"
+	v1alpha1permission "github.com/upbound/provider-artifactory/apis/permission/v1alpha1"
+	v1alpha1propertyset "github.com/upbound/provider-artifactory/apis/propertyset/v1alpha1"
 	v1alpha1proxy "github.com/upbound/provider-artifactory/apis/proxy/v1alpha1"
-	v1alpha1remote_alpine_repository "github.com/upbound/provider-artifactory/apis/remote_alpine_repository/v1alpha1"
-	v1alpha1remote_bower_repository "github.com/upbound/provider-artifactory/apis/remote_bower_repository/v1alpha1"
-	v1alpha1remote_cargo_repository "github.com/upbound/provider-artifactory/apis/remote_cargo_repository/v1alpha1"
-	v1alpha1remote_chef_repository "github.com/upbound/provider-artifactory/apis/remote_chef_repository/v1alpha1"
-	v1alpha1remote_cocoapods_repository "github.com/upbound/provider-artifactory/apis/remote_cocoapods_repository/v1alpha1"
-	v1alpha1remote_composer_repository "github.com/upbound/provider-artifactory/apis/remote_composer_repository/v1alpha1"
-	v1alpha1remote_conan_repository "github.com/upbound/provider-artifactory/apis/remote_conan_repository/v1alpha1"
-	v1alpha1remote_conda_repository "github.com/upbound/provider-artifactory/apis/remote_conda_repository/v1alpha1"
-	v1alpha1remote_cran_repository "github.com/upbound/provider-artifactory/apis/remote_cran_repository/v1alpha1"
-	v1alpha1remote_debian_repository "github.com/upbound/provider-artifactory/apis/remote_debian_repository/v1alpha1"
-	v1alpha1remote_docker_repository "github.com/upbound/provider-artifactory/apis/remote_docker_repository/v1alpha1"
-	v1alpha1remote_gems_repository "github.com/upbound/provider-artifactory/apis/remote_gems_repository/v1alpha1"
-	v1alpha1remote_generic_repository "github.com/upbound/provider-artifactory/apis/remote_generic_repository/v1alpha1"
-	v1alpha1remote_gitlfs_repository "github.com/upbound/provider-artifactory/apis/remote_gitlfs_repository/v1alpha1"
-	v1alpha1remote_go_repository "github.com/upbound/provider-artifactory/apis/remote_go_repository/v1alpha1"
-	v1alpha1remote_gradle_repository "github.com/upbound/provider-artifactory/apis/remote_gradle_repository/v1alpha1"
-	v1alpha1remote_helm_repository "github.com/upbound/provider-artifactory/apis/remote_helm_repository/v1alpha1"
-	v1alpha1remote_huggingfaceml_repository "github.com/upbound/provider-artifactory/apis/remote_huggingfaceml_repository/v1alpha1"
-	v1alpha1remote_ivy_repository "github.com/upbound/provider-artifactory/apis/remote_ivy_repository/v1alpha1"
-	v1alpha1remote_maven_repository "github.com/upbound/provider-artifactory/apis/remote_maven_repository/v1alpha1"
-	v1alpha1remote_npm_repository "github.com/upbound/provider-artifactory/apis/remote_npm_repository/v1alpha1"
-	v1alpha1remote_nuget_repository "github.com/upbound/provider-artifactory/apis/remote_nuget_repository/v1alpha1"
-	v1alpha1remote_opkg_repository "github.com/upbound/provider-artifactory/apis/remote_opkg_repository/v1alpha1"
-	v1alpha1remote_p2_repository "github.com/upbound/provider-artifactory/apis/remote_p2_repository/v1alpha1"
-	v1alpha1remote_pub_repository "github.com/upbound/provider-artifactory/apis/remote_pub_repository/v1alpha1"
-	v1alpha1remote_puppet_repository "github.com/upbound/provider-artifactory/apis/remote_puppet_repository/v1alpha1"
-	v1alpha1remote_pypi_repository "github.com/upbound/provider-artifactory/apis/remote_pypi_repository/v1alpha1"
-	v1alpha1remote_repository_replication "github.com/upbound/provider-artifactory/apis/remote_repository_replication/v1alpha1"
-	v1alpha1remote_rpm_repository "github.com/upbound/provider-artifactory/apis/remote_rpm_repository/v1alpha1"
-	v1alpha1remote_sbt_repository "github.com/upbound/provider-artifactory/apis/remote_sbt_repository/v1alpha1"
-	v1alpha1remote_swift_repository "github.com/upbound/provider-artifactory/apis/remote_swift_repository/v1alpha1"
-	v1alpha1remote_terraform_repository "github.com/upbound/provider-artifactory/apis/remote_terraform_repository/v1alpha1"
-	v1alpha1remote_vcs_repository "github.com/upbound/provider-artifactory/apis/remote_vcs_repository/v1alpha1"
-	v1alpha1repository_layout "github.com/upbound/provider-artifactory/apis/repository_layout/v1alpha1"
-	v1alpha1scoped_token "github.com/upbound/provider-artifactory/apis/scoped_token/v1alpha1"
-	v1alpha1unmanaged_user "github.com/upbound/provider-artifactory/apis/unmanaged_user/v1alpha1"
+	v1alpha1pull "github.com/upbound/provider-artifactory/apis/pull/v1alpha1"
+	v1alpha1push "github.com/upbound/provider-artifactory/apis/push/v1alpha1"
+	v1alpha1releasebundlecustomwebhook "github.com/upbound/provider-artifactory/apis/releasebundlecustomwebhook/v1alpha1"
+	v1alpha1releasebundlewebhook "github.com/upbound/provider-artifactory/apis/releasebundlewebhook/v1alpha1"
+	v1alpha1remote "github.com/upbound/provider-artifactory/apis/remote/v1alpha1"
+	v1alpha1remotealpinerepository "github.com/upbound/provider-artifactory/apis/remotealpinerepository/v1alpha1"
+	v1alpha1remotebowerrepository "github.com/upbound/provider-artifactory/apis/remotebowerrepository/v1alpha1"
+	v1alpha1remotecargorepository "github.com/upbound/provider-artifactory/apis/remotecargorepository/v1alpha1"
+	v1alpha1remotechefrepository "github.com/upbound/provider-artifactory/apis/remotechefrepository/v1alpha1"
+	v1alpha1remotecocoapodsrepository "github.com/upbound/provider-artifactory/apis/remotecocoapodsrepository/v1alpha1"
+	v1alpha1remotecomposerrepository "github.com/upbound/provider-artifactory/apis/remotecomposerrepository/v1alpha1"
+	v1alpha1remoteconanrepository "github.com/upbound/provider-artifactory/apis/remoteconanrepository/v1alpha1"
+	v1alpha1remotecondarepository "github.com/upbound/provider-artifactory/apis/remotecondarepository/v1alpha1"
+	v1alpha1remotecranrepository "github.com/upbound/provider-artifactory/apis/remotecranrepository/v1alpha1"
+	v1alpha1remotedebianrepository "github.com/upbound/provider-artifactory/apis/remotedebianrepository/v1alpha1"
+	v1alpha1remotedockerrepository "github.com/upbound/provider-artifactory/apis/remotedockerrepository/v1alpha1"
+	v1alpha1remotegemsrepository "github.com/upbound/provider-artifactory/apis/remotegemsrepository/v1alpha1"
+	v1alpha1remotegenericrepository "github.com/upbound/provider-artifactory/apis/remotegenericrepository/v1alpha1"
+	v1alpha1remotegitlfsrepository "github.com/upbound/provider-artifactory/apis/remotegitlfsrepository/v1alpha1"
+	v1alpha1remotegorepository "github.com/upbound/provider-artifactory/apis/remotegorepository/v1alpha1"
+	v1alpha1remotegradlerepository "github.com/upbound/provider-artifactory/apis/remotegradlerepository/v1alpha1"
+	v1alpha1remotehelmrepository "github.com/upbound/provider-artifactory/apis/remotehelmrepository/v1alpha1"
+	v1alpha1remotehuggingfacemlrepository "github.com/upbound/provider-artifactory/apis/remotehuggingfacemlrepository/v1alpha1"
+	v1alpha1remoteivyrepository "github.com/upbound/provider-artifactory/apis/remoteivyrepository/v1alpha1"
+	v1alpha1remotemavenrepository "github.com/upbound/provider-artifactory/apis/remotemavenrepository/v1alpha1"
+	v1alpha1remotenpmrepository "github.com/upbound/provider-artifactory/apis/remotenpmrepository/v1alpha1"
+	v1alpha1remotenugetrepository "github.com/upbound/provider-artifactory/apis/remotenugetrepository/v1alpha1"
+	v1alpha1remoteopkgrepository "github.com/upbound/provider-artifactory/apis/remoteopkgrepository/v1alpha1"
+	v1alpha1remotep2repository "github.com/upbound/provider-artifactory/apis/remotep2repository/v1alpha1"
+	v1alpha1remotepubrepository "github.com/upbound/provider-artifactory/apis/remotepubrepository/v1alpha1"
+	v1alpha1remotepuppetrepository "github.com/upbound/provider-artifactory/apis/remotepuppetrepository/v1alpha1"
+	v1alpha1remotepypirepository "github.com/upbound/provider-artifactory/apis/remotepypirepository/v1alpha1"
+	v1alpha1remoterpmrepository "github.com/upbound/provider-artifactory/apis/remoterpmrepository/v1alpha1"
+	v1alpha1remotesbtrepository "github.com/upbound/provider-artifactory/apis/remotesbtrepository/v1alpha1"
+	v1alpha1remoteswiftrepository "github.com/upbound/provider-artifactory/apis/remoteswiftrepository/v1alpha1"
+	v1alpha1remoteterraformrepository "github.com/upbound/provider-artifactory/apis/remoteterraformrepository/v1alpha1"
+	v1alpha1remotevcsrepository "github.com/upbound/provider-artifactory/apis/remotevcsrepository/v1alpha1"
+	v1alpha1replication "github.com/upbound/provider-artifactory/apis/replication/v1alpha1"
+	v1alpha1repositorylayout "github.com/upbound/provider-artifactory/apis/repositorylayout/v1alpha1"
+	v1alpha1saml "github.com/upbound/provider-artifactory/apis/saml/v1alpha1"
+	v1alpha1scopedtoken "github.com/upbound/provider-artifactory/apis/scopedtoken/v1alpha1"
+	v1alpha1single "github.com/upbound/provider-artifactory/apis/single/v1alpha1"
+	v1alpha1unmanageduser "github.com/upbound/provider-artifactory/apis/unmanageduser/v1alpha1"
 	v1alpha1user "github.com/upbound/provider-artifactory/apis/user/v1alpha1"
 	v1alpha1apis "github.com/upbound/provider-artifactory/apis/v1alpha1"
 	v1beta1 "github.com/upbound/provider-artifactory/apis/v1beta1"
-	v1alpha1virtual_alpine_repository "github.com/upbound/provider-artifactory/apis/virtual_alpine_repository/v1alpha1"
-	v1alpha1virtual_bower_repository "github.com/upbound/provider-artifactory/apis/virtual_bower_repository/v1alpha1"
-	v1alpha1virtual_chef_repository "github.com/upbound/provider-artifactory/apis/virtual_chef_repository/v1alpha1"
-	v1alpha1virtual_composer_repository "github.com/upbound/provider-artifactory/apis/virtual_composer_repository/v1alpha1"
-	v1alpha1virtual_conan_repository "github.com/upbound/provider-artifactory/apis/virtual_conan_repository/v1alpha1"
-	v1alpha1virtual_conda_repository "github.com/upbound/provider-artifactory/apis/virtual_conda_repository/v1alpha1"
-	v1alpha1virtual_cran_repository "github.com/upbound/provider-artifactory/apis/virtual_cran_repository/v1alpha1"
-	v1alpha1virtual_debian_repository "github.com/upbound/provider-artifactory/apis/virtual_debian_repository/v1alpha1"
-	v1alpha1virtual_docker_repository "github.com/upbound/provider-artifactory/apis/virtual_docker_repository/v1alpha1"
-	v1alpha1virtual_gems_repository "github.com/upbound/provider-artifactory/apis/virtual_gems_repository/v1alpha1"
-	v1alpha1virtual_generic_repository "github.com/upbound/provider-artifactory/apis/virtual_generic_repository/v1alpha1"
-	v1alpha1virtual_gitlfs_repository "github.com/upbound/provider-artifactory/apis/virtual_gitlfs_repository/v1alpha1"
-	v1alpha1virtual_go_repository "github.com/upbound/provider-artifactory/apis/virtual_go_repository/v1alpha1"
-	v1alpha1virtual_gradle_repository "github.com/upbound/provider-artifactory/apis/virtual_gradle_repository/v1alpha1"
-	v1alpha1virtual_helm_repository "github.com/upbound/provider-artifactory/apis/virtual_helm_repository/v1alpha1"
-	v1alpha1virtual_ivy_repository "github.com/upbound/provider-artifactory/apis/virtual_ivy_repository/v1alpha1"
-	v1alpha1virtual_maven_repository "github.com/upbound/provider-artifactory/apis/virtual_maven_repository/v1alpha1"
-	v1alpha1virtual_npm_repository "github.com/upbound/provider-artifactory/apis/virtual_npm_repository/v1alpha1"
-	v1alpha1virtual_nuget_repository "github.com/upbound/provider-artifactory/apis/virtual_nuget_repository/v1alpha1"
-	v1alpha1virtual_p2_repository "github.com/upbound/provider-artifactory/apis/virtual_p2_repository/v1alpha1"
-	v1alpha1virtual_pub_repository "github.com/upbound/provider-artifactory/apis/virtual_pub_repository/v1alpha1"
-	v1alpha1virtual_puppet_repository "github.com/upbound/provider-artifactory/apis/virtual_puppet_repository/v1alpha1"
-	v1alpha1virtual_pypi_repository "github.com/upbound/provider-artifactory/apis/virtual_pypi_repository/v1alpha1"
-	v1alpha1virtual_rpm_repository "github.com/upbound/provider-artifactory/apis/virtual_rpm_repository/v1alpha1"
-	v1alpha1virtual_sbt_repository "github.com/upbound/provider-artifactory/apis/virtual_sbt_repository/v1alpha1"
-	v1alpha1virtual_swift_repository "github.com/upbound/provider-artifactory/apis/virtual_swift_repository/v1alpha1"
-	v1alpha1virtual_terraform_repository "github.com/upbound/provider-artifactory/apis/virtual_terraform_repository/v1alpha1"
+	v1alpha1virtualalpinerepository "github.com/upbound/provider-artifactory/apis/virtualalpinerepository/v1alpha1"
+	v1alpha1virtualbowerrepository "github.com/upbound/provider-artifactory/apis/virtualbowerrepository/v1alpha1"
+	v1alpha1virtualchefrepository "github.com/upbound/provider-artifactory/apis/virtualchefrepository/v1alpha1"
+	v1alpha1virtualcomposerrepository "github.com/upbound/provider-artifactory/apis/virtualcomposerrepository/v1alpha1"
+	v1alpha1virtualconanrepository "github.com/upbound/provider-artifactory/apis/virtualconanrepository/v1alpha1"
+	v1alpha1virtualcondarepository "github.com/upbound/provider-artifactory/apis/virtualcondarepository/v1alpha1"
+	v1alpha1virtualcranrepository "github.com/upbound/provider-artifactory/apis/virtualcranrepository/v1alpha1"
+	v1alpha1virtualdebianrepository "github.com/upbound/provider-artifactory/apis/virtualdebianrepository/v1alpha1"
+	v1alpha1virtualdockerrepository "github.com/upbound/provider-artifactory/apis/virtualdockerrepository/v1alpha1"
+	v1alpha1virtualgemsrepository "github.com/upbound/provider-artifactory/apis/virtualgemsrepository/v1alpha1"
+	v1alpha1virtualgenericrepository "github.com/upbound/provider-artifactory/apis/virtualgenericrepository/v1alpha1"
+	v1alpha1virtualgitlfsrepository "github.com/upbound/provider-artifactory/apis/virtualgitlfsrepository/v1alpha1"
+	v1alpha1virtualgorepository "github.com/upbound/provider-artifactory/apis/virtualgorepository/v1alpha1"
+	v1alpha1virtualgradlerepository "github.com/upbound/provider-artifactory/apis/virtualgradlerepository/v1alpha1"
+	v1alpha1virtualhelmrepository "github.com/upbound/provider-artifactory/apis/virtualhelmrepository/v1alpha1"
+	v1alpha1virtualivyrepository "github.com/upbound/provider-artifactory/apis/virtualivyrepository/v1alpha1"
+	v1alpha1virtualmavenrepository "github.com/upbound/provider-artifactory/apis/virtualmavenrepository/v1alpha1"
+	v1alpha1virtualnpmrepository "github.com/upbound/provider-artifactory/apis/virtualnpmrepository/v1alpha1"
+	v1alpha1virtualnugetrepository "github.com/upbound/provider-artifactory/apis/virtualnugetrepository/v1alpha1"
+	v1alpha1virtualp2repository "github.com/upbound/provider-artifactory/apis/virtualp2repository/v1alpha1"
+	v1alpha1virtualpubrepository "github.com/upbound/provider-artifactory/apis/virtualpubrepository/v1alpha1"
+	v1alpha1virtualpuppetrepository "github.com/upbound/provider-artifactory/apis/virtualpuppetrepository/v1alpha1"
+	v1alpha1virtualpypirepository "github.com/upbound/provider-artifactory/apis/virtualpypirepository/v1alpha1"
+	v1alpha1virtualrpmrepository "github.com/upbound/provider-artifactory/apis/virtualrpmrepository/v1alpha1"
+	v1alpha1virtualsbtrepository "github.com/upbound/provider-artifactory/apis/virtualsbtrepository/v1alpha1"
+	v1alpha1virtualswiftrepository "github.com/upbound/provider-artifactory/apis/virtualswiftrepository/v1alpha1"
+	v1alpha1virtualterraformrepository "github.com/upbound/provider-artifactory/apis/virtualterraformrepository/v1alpha1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
-		v1alpha1artifact_custom_webhook.SchemeBuilder.AddToScheme,
-		v1alpha1artifact_property_custom_webhook.SchemeBuilder.AddToScheme,
-		v1alpha1artifact_property_webhook.SchemeBuilder.AddToScheme,
-		v1alpha1artifact_webhook.SchemeBuilder.AddToScheme,
+		v1alpha1anonymous.SchemeBuilder.AddToScheme,
+		v1alpha1api.SchemeBuilder.AddToScheme,
+		v1alpha1artifactcustomwebhook.SchemeBuilder.AddToScheme,
 		v1alpha1artifactory.SchemeBuilder.AddToScheme,
+		v1alpha1artifactpropertycustomwebhook.SchemeBuilder.AddToScheme,
+		v1alpha1artifactpropertywebhook.SchemeBuilder.AddToScheme,
+		v1alpha1artifactwebhook.SchemeBuilder.AddToScheme,
 		v1alpha1backup.SchemeBuilder.AddToScheme,
-		v1alpha1build_custom_webhook.SchemeBuilder.AddToScheme,
-		v1alpha1build_webhook.SchemeBuilder.AddToScheme,
+		v1alpha1buildcustomwebhook.SchemeBuilder.AddToScheme,
+		v1alpha1buildwebhook.SchemeBuilder.AddToScheme,
 		v1alpha1certificate.SchemeBuilder.AddToScheme,
-		v1alpha1distribution_custom_webhook.SchemeBuilder.AddToScheme,
-		v1alpha1distribution_public_key.SchemeBuilder.AddToScheme,
-		v1alpha1distribution_webhook.SchemeBuilder.AddToScheme,
-		v1alpha1docker_custom_webhook.SchemeBuilder.AddToScheme,
-		v1alpha1docker_webhook.SchemeBuilder.AddToScheme,
-		v1alpha1federated_alpine_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_bower_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_cargo_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_chef_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_cocoapods_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_composer_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_conan_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_conda_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_cran_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_debian_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_docker_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_docker_v1_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_docker_v2_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_gems_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_generic_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_gitlfs_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_go_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_gradle_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_helm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_ivy_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_maven_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_npm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_nuget_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_opkg_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_puppet_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_pypi_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_rpm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_sbt_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_swift_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_terraform_module_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_terraform_provider_repository.SchemeBuilder.AddToScheme,
-		v1alpha1federated_vagrant_repository.SchemeBuilder.AddToScheme,
-		v1alpha1general_security.SchemeBuilder.AddToScheme,
-		v1alpha1global_environment.SchemeBuilder.AddToScheme,
+		v1alpha1distributioncustomwebhook.SchemeBuilder.AddToScheme,
+		v1alpha1distributionpublickey.SchemeBuilder.AddToScheme,
+		v1alpha1distributionwebhook.SchemeBuilder.AddToScheme,
+		v1alpha1dockercustomwebhook.SchemeBuilder.AddToScheme,
+		v1alpha1dockerwebhook.SchemeBuilder.AddToScheme,
+		v1alpha1federatedalpinerepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedbowerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedcargorepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedchefrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedcocoapodsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedcomposerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedconanrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedcondarepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedcranrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federateddebianrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federateddockerv1repository.SchemeBuilder.AddToScheme,
+		v1alpha1federateddockerv2repository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedgemsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedgenericrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedgitlfsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedgorepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedgradlerepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedhelmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedivyrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedmavenrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatednpmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatednugetrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedopkgrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedpuppetrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedpypirepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedrpmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedsbtrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedswiftrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedterraformmodulerepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedterraformproviderrepository.SchemeBuilder.AddToScheme,
+		v1alpha1federatedvagrantrepository.SchemeBuilder.AddToScheme,
+		v1alpha1generalsecurity.SchemeBuilder.AddToScheme,
+		v1alpha1globalenvironment.SchemeBuilder.AddToScheme,
 		v1alpha1group.SchemeBuilder.AddToScheme,
 		v1alpha1keypair.SchemeBuilder.AddToScheme,
-		v1alpha1ldap_group_setting.SchemeBuilder.AddToScheme,
-		v1alpha1ldap_group_setting_v2.SchemeBuilder.AddToScheme,
-		v1alpha1ldap_setting.SchemeBuilder.AddToScheme,
-		v1alpha1ldap_setting_v2.SchemeBuilder.AddToScheme,
-		v1alpha1local_alpine_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_bower_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_cargo_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_chef_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_cocoapods_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_composer_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_conan_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_conda_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_cran_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_debian_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_docker_v1_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_docker_v2_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_gems_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_generic_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_gitlfs_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_go_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_gradle_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_helm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_huggingfaceml_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_ivy_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_maven_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_npm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_nuget_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_opkg_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_pub_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_puppet_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_pypi_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_repository_multi_replication.SchemeBuilder.AddToScheme,
-		v1alpha1local_repository_single_replication.SchemeBuilder.AddToScheme,
-		v1alpha1local_rpm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_sbt_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_swift_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_terraform_module_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_terraform_provider_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_terraformbackend_repository.SchemeBuilder.AddToScheme,
-		v1alpha1local_vagrant_repository.SchemeBuilder.AddToScheme,
-		v1alpha1mail_server.SchemeBuilder.AddToScheme,
-		v1alpha1managed_user.SchemeBuilder.AddToScheme,
-		v1alpha1oauth_settings.SchemeBuilder.AddToScheme,
-		v1alpha1property_set.SchemeBuilder.AddToScheme,
+		v1alpha1ldapgroupsetting.SchemeBuilder.AddToScheme,
+		v1alpha1ldapgroupsettingv2.SchemeBuilder.AddToScheme,
+		v1alpha1ldapsetting.SchemeBuilder.AddToScheme,
+		v1alpha1ldapsettingv2.SchemeBuilder.AddToScheme,
+		v1alpha1localalpinerepository.SchemeBuilder.AddToScheme,
+		v1alpha1localbowerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localcargorepository.SchemeBuilder.AddToScheme,
+		v1alpha1localchefrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localcocoapodsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localcomposerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localconanrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localcondarepository.SchemeBuilder.AddToScheme,
+		v1alpha1localcranrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localdebianrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localdockerv1repository.SchemeBuilder.AddToScheme,
+		v1alpha1localdockerv2repository.SchemeBuilder.AddToScheme,
+		v1alpha1localgemsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localgenericrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localgitlfsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localgorepository.SchemeBuilder.AddToScheme,
+		v1alpha1localgradlerepository.SchemeBuilder.AddToScheme,
+		v1alpha1localhelmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localhuggingfacemlrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localivyrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localmavenrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localnpmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localnugetrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localopkgrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localpubrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localpuppetrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localpypirepository.SchemeBuilder.AddToScheme,
+		v1alpha1localrepositorymultireplication.SchemeBuilder.AddToScheme,
+		v1alpha1localrepositorysinglereplication.SchemeBuilder.AddToScheme,
+		v1alpha1localrpmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localsbtrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localswiftrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localterraformbackendrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localterraformmodulerepository.SchemeBuilder.AddToScheme,
+		v1alpha1localterraformproviderrepository.SchemeBuilder.AddToScheme,
+		v1alpha1localvagrantrepository.SchemeBuilder.AddToScheme,
+		v1alpha1mailserver.SchemeBuilder.AddToScheme,
+		v1alpha1manageduser.SchemeBuilder.AddToScheme,
+		v1alpha1oauthsettings.SchemeBuilder.AddToScheme,
+		v1alpha1permission.SchemeBuilder.AddToScheme,
+		v1alpha1propertyset.SchemeBuilder.AddToScheme,
 		v1alpha1proxy.SchemeBuilder.AddToScheme,
-		v1alpha1remote_alpine_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_bower_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_cargo_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_chef_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_cocoapods_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_composer_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_conan_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_conda_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_cran_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_debian_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_docker_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_gems_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_generic_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_gitlfs_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_go_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_gradle_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_helm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_huggingfaceml_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_ivy_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_maven_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_npm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_nuget_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_opkg_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_p2_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_pub_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_puppet_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_pypi_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_repository_replication.SchemeBuilder.AddToScheme,
-		v1alpha1remote_rpm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_sbt_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_swift_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_terraform_repository.SchemeBuilder.AddToScheme,
-		v1alpha1remote_vcs_repository.SchemeBuilder.AddToScheme,
-		v1alpha1repository_layout.SchemeBuilder.AddToScheme,
-		v1alpha1scoped_token.SchemeBuilder.AddToScheme,
-		v1alpha1unmanaged_user.SchemeBuilder.AddToScheme,
+		v1alpha1pull.SchemeBuilder.AddToScheme,
+		v1alpha1push.SchemeBuilder.AddToScheme,
+		v1alpha1releasebundlecustomwebhook.SchemeBuilder.AddToScheme,
+		v1alpha1releasebundlewebhook.SchemeBuilder.AddToScheme,
+		v1alpha1remote.SchemeBuilder.AddToScheme,
+		v1alpha1remotealpinerepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotebowerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotecargorepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotechefrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotecocoapodsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotecomposerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remoteconanrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotecondarepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotecranrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotedebianrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotedockerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotegemsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotegenericrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotegitlfsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotegorepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotegradlerepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotehelmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotehuggingfacemlrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remoteivyrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotemavenrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotenpmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotenugetrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remoteopkgrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotep2repository.SchemeBuilder.AddToScheme,
+		v1alpha1remotepubrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotepuppetrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotepypirepository.SchemeBuilder.AddToScheme,
+		v1alpha1remoterpmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotesbtrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remoteswiftrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remoteterraformrepository.SchemeBuilder.AddToScheme,
+		v1alpha1remotevcsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1replication.SchemeBuilder.AddToScheme,
+		v1alpha1repositorylayout.SchemeBuilder.AddToScheme,
+		v1alpha1saml.SchemeBuilder.AddToScheme,
+		v1alpha1scopedtoken.SchemeBuilder.AddToScheme,
+		v1alpha1single.SchemeBuilder.AddToScheme,
+		v1alpha1unmanageduser.SchemeBuilder.AddToScheme,
 		v1alpha1user.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_alpine_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_bower_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_chef_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_composer_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_conan_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_conda_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_cran_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_debian_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_docker_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_gems_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_generic_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_gitlfs_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_go_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_gradle_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_helm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_ivy_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_maven_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_npm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_nuget_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_p2_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_pub_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_puppet_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_pypi_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_rpm_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_sbt_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_swift_repository.SchemeBuilder.AddToScheme,
-		v1alpha1virtual_terraform_repository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualalpinerepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualbowerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualchefrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualcomposerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualconanrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualcondarepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualcranrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualdebianrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualdockerrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualgemsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualgenericrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualgitlfsrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualgorepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualgradlerepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualhelmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualivyrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualmavenrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualnpmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualnugetrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualp2repository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualpubrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualpuppetrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualpypirepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualrpmrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualsbtrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualswiftrepository.SchemeBuilder.AddToScheme,
+		v1alpha1virtualterraformrepository.SchemeBuilder.AddToScheme,
 	)
 }
 

@@ -1,0 +1,16 @@
+apiVersion: federatedswiftrepository.crossplane.io/v1alpha1
+kind: SwiftRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedswiftrepository/v1alpha1/swiftrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-swift-repo
+  name: terraform-federated-test-swift-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-swift-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-swift-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-swift-repo-2

@@ -1,0 +1,17 @@
+apiVersion: virtualnugetrepository.crossplane.io/v1alpha1
+kind: NugetRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualnugetrepository/v1alpha1/nugetrepository
+  labels:
+    testing.upbound.io/example-name: foo-nuget
+  name: foo-nuget
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    forceNugetAuthentication: true
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-nuget
+    notes: Internal description
+    repositories: [ ]

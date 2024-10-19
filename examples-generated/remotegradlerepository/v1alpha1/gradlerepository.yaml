@@ -1,0 +1,17 @@
+apiVersion: remotegradlerepository.crossplane.io/v1alpha1
+kind: GradleRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotegradlerepository/v1alpha1/gradlerepository
+  labels:
+    testing.upbound.io/example-name: gradle-remote
+  name: gradle-remote
+spec:
+  forProvider:
+    fetchJarsEagerly: true
+    fetchSourcesEagerly: false
+    key: gradle-remote-foo
+    max_unique_snapshots: 10
+    rejectInvalidJars: true
+    suppressPomConsistencyChecks: true
+    url: https://repo1.maven.org/maven2/

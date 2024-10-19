@@ -1,0 +1,16 @@
+apiVersion: federatedcargorepository.crossplane.io/v1alpha1
+kind: CargoRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedcargorepository/v1alpha1/cargorepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-cargo-repo
+  name: terraform-federated-test-cargo-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-cargo-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-cargo-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-cargo-repo-2

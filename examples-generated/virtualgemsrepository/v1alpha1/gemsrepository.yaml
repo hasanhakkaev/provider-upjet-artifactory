@@ -1,0 +1,16 @@
+apiVersion: virtualgemsrepository.crossplane.io/v1alpha1
+kind: GemsRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualgemsrepository/v1alpha1/gemsrepository
+  labels:
+    testing.upbound.io/example-name: foo-gems
+  name: foo-gems
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-gems
+    notes: Internal description
+    repositories: [ ]

@@ -1,0 +1,11 @@
+apiVersion: generalsecurity.crossplane.io/v1alpha1
+kind: Security
+metadata:
+  annotations:
+    meta.upbound.io/example-id: generalsecurity/v1alpha1/security
+  labels:
+    testing.upbound.io/example-name: security
+  name: security
+spec:
+  forProvider:
+    enableAnonymousAccess: true

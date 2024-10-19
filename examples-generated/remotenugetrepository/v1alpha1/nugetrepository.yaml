@@ -1,0 +1,16 @@
+apiVersion: remotenugetrepository.crossplane.io/v1alpha1
+kind: NugetRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotenugetrepository/v1alpha1/nugetrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-nuget
+  name: my-remote-nuget
+spec:
+  forProvider:
+    downloadContextPath: api/v2/package
+    forceNugetAuthentication: true
+    key: my-remote-nuget
+    symbolServerUrl: https://symbols.nuget.org/download/symbols
+    url: https://www.nuget.org/
+    v3FeedUrl: https://api.nuget.org/v3/index.json

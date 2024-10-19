@@ -1,0 +1,16 @@
+apiVersion: federatedhelmrepository.crossplane.io/v1alpha1
+kind: HelmRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedhelmrepository/v1alpha1/helmrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-helm-repo
+  name: terraform-federated-test-helm-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-helm-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-helm-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-helm-repo-2

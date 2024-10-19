@@ -1,0 +1,16 @@
+apiVersion: virtualpuppetrepository.crossplane.io/v1alpha1
+kind: PuppetRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualpuppetrepository/v1alpha1/puppetrepository
+  labels:
+    testing.upbound.io/example-name: foo-puppet
+  name: foo-puppet
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-puppet
+    notes: Internal description
+    repositories: [ ]

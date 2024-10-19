@@ -1,0 +1,11 @@
+apiVersion: localcomposerrepository.crossplane.io/v1alpha1
+kind: ComposerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localcomposerrepository/v1alpha1/composerrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-composer-repo
+  name: terraform-local-test-composer-repo
+spec:
+  forProvider:
+    key: terraform-local-test-composer-repo

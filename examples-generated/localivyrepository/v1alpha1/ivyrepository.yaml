@@ -1,0 +1,11 @@
+apiVersion: localivyrepository.crossplane.io/v1alpha1
+kind: IvyRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localivyrepository/v1alpha1/ivyrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-ivy-repo
+  name: terraform-local-test-ivy-repo
+spec:
+  forProvider:
+    key: terraform-local-test-ivy-repo

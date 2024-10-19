@@ -1,0 +1,11 @@
+apiVersion: localpypirepository.crossplane.io/v1alpha1
+kind: PypiRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localpypirepository/v1alpha1/pypirepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-pypi-repo
+  name: terraform-local-test-pypi-repo
+spec:
+  forProvider:
+    key: terraform-local-test-pypi-repo

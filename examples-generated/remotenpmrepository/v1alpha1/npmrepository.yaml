@@ -1,0 +1,14 @@
+apiVersion: remotenpmrepository.crossplane.io/v1alpha1
+kind: NpmRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotenpmrepository/v1alpha1/npmrepository
+  labels:
+    testing.upbound.io/example-name: npm-remote
+  name: npm-remote
+spec:
+  forProvider:
+    key: npm-remote
+    listRemoteFolderItems: true
+    mismatchingMimeTypesOverrideList: application/json,application/xml
+    url: https://registry.npmjs.org

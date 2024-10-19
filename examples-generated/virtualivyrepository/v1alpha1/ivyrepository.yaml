@@ -1,0 +1,17 @@
+apiVersion: virtualivyrepository.crossplane.io/v1alpha1
+kind: IvyRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualivyrepository/v1alpha1/ivyrepository
+  labels:
+    testing.upbound.io/example-name: foo-ivy
+  name: foo-ivy
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-ivy
+    notes: Internal description
+    pomRepositoryReferencesCleanupPolicy: discard_active_reference
+    repositories: [ ]

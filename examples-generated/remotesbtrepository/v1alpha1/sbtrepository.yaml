@@ -1,0 +1,17 @@
+apiVersion: remotesbtrepository.crossplane.io/v1alpha1
+kind: SbtRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotesbtrepository/v1alpha1/sbtrepository
+  labels:
+    testing.upbound.io/example-name: sbt-remote
+  name: sbt-remote
+spec:
+  forProvider:
+    fetchJarsEagerly: true
+    fetchSourcesEagerly: false
+    key: sbt-remote-foo
+    max_unique_snapshots: 10
+    rejectInvalidJars: true
+    suppressPomConsistencyChecks: true
+    url: https://repo1.maven.org/maven2/

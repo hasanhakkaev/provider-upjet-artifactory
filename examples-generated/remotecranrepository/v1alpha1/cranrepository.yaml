@@ -1,0 +1,12 @@
+apiVersion: remotecranrepository.crossplane.io/v1alpha1
+kind: CranRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotecranrepository/v1alpha1/cranrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-cran
+  name: my-remote-cran
+spec:
+  forProvider:
+    key: my-remote-cran
+    url: https://cran.r-project.org/

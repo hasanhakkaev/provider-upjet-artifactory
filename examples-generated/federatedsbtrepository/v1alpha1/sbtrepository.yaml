@@ -1,0 +1,16 @@
+apiVersion: federatedsbtrepository.crossplane.io/v1alpha1
+kind: SbtRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedsbtrepository/v1alpha1/sbtrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-sbt-repo
+  name: terraform-federated-test-sbt-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-sbt-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-sbt-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-sbt-repo-2

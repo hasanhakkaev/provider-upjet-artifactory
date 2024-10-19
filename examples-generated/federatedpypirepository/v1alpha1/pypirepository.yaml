@@ -1,0 +1,16 @@
+apiVersion: federatedpypirepository.crossplane.io/v1alpha1
+kind: PypiRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedpypirepository/v1alpha1/pypirepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-pypi-repo
+  name: terraform-federated-test-pypi-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-pypi-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-pypi-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-pypi-repo-2

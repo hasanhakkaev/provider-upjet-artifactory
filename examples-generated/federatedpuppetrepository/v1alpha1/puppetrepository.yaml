@@ -1,0 +1,16 @@
+apiVersion: federatedpuppetrepository.crossplane.io/v1alpha1
+kind: PuppetRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedpuppetrepository/v1alpha1/puppetrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-puppet-repo
+  name: terraform-federated-test-puppet-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-puppet-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-puppet-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-puppet-repo-2

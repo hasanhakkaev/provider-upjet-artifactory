@@ -1,0 +1,16 @@
+apiVersion: federatedcomposerrepository.crossplane.io/v1alpha1
+kind: ComposerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedcomposerrepository/v1alpha1/composerrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-composer-repo
+  name: terraform-federated-test-composer-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-composer-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-composer-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-composer-repo-2

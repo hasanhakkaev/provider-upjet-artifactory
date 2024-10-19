@@ -1,0 +1,11 @@
+apiVersion: localgorepository.crossplane.io/v1alpha1
+kind: GoRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localgorepository/v1alpha1/gorepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-go-repo
+  name: terraform-local-test-go-repo
+spec:
+  forProvider:
+    key: terraform-local-test-go-repo

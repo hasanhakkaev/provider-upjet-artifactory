@@ -1,0 +1,12 @@
+apiVersion: distributionpublickey.crossplane.io/v1alpha1
+kind: PublicKey
+metadata:
+  annotations:
+    meta.upbound.io/example-id: distributionpublickey/v1alpha1/publickey
+  labels:
+    testing.upbound.io/example-name: my-key
+  name: my-key
+spec:
+  forProvider:
+    alias: my-key
+    publicKey: ${file("samples/rsa.pub")}

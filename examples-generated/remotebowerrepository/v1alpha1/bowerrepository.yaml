@@ -1,0 +1,13 @@
+apiVersion: remotebowerrepository.crossplane.io/v1alpha1
+kind: BowerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotebowerrepository/v1alpha1/bowerrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-bower
+  name: my-remote-bower
+spec:
+  forProvider:
+    key: my-remote-bower
+    url: https://github.com/
+    vcsGitProvider: GITHUB

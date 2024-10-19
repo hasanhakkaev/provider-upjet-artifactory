@@ -1,0 +1,17 @@
+apiVersion: localgradlerepository.crossplane.io/v1alpha1
+kind: GradleRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localgradlerepository/v1alpha1/gradlerepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-gradle-repo-basic
+  name: terraform-local-test-gradle-repo-basic
+spec:
+  forProvider:
+    checksumPolicyType: client-checksums
+    handleReleases: true
+    handleSnapshots: true
+    key: terraform-local-test-gradle-repo-basic
+    maxUniqueSnapshots: 10
+    snapshotVersionBehavior: unique
+    suppressPomConsistencyChecks: true

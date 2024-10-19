@@ -1,0 +1,16 @@
+apiVersion: federatedvagrantrepository.crossplane.io/v1alpha1
+kind: VagrantRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: federatedvagrantrepository/v1alpha1/vagrantrepository
+  labels:
+    testing.upbound.io/example-name: terraform-federated-test-vagrant-repo
+  name: terraform-federated-test-vagrant-repo
+spec:
+  forProvider:
+    key: terraform-federated-test-vagrant-repo
+    member:
+      - enabled: true
+        url: http://tempurl.org/artifactory/terraform-federated-test-vagrant-repo
+      - enabled: true
+        url: http://tempurl2.org/artifactory/terraform-federated-test-vagrant-repo-2

@@ -1,0 +1,11 @@
+apiVersion: localvagrantrepository.crossplane.io/v1alpha1
+kind: VagrantRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localvagrantrepository/v1alpha1/vagrantrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-vagrant-repo
+  name: terraform-local-test-vagrant-repo
+spec:
+  forProvider:
+    key: terraform-local-test-vagrant-repo

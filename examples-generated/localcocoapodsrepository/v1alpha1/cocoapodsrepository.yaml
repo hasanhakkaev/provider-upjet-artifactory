@@ -1,0 +1,11 @@
+apiVersion: localcocoapodsrepository.crossplane.io/v1alpha1
+kind: CocoapodsRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localcocoapodsrepository/v1alpha1/cocoapodsrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-cocoapods-repo
+  name: terraform-local-test-cocoapods-repo
+spec:
+  forProvider:
+    key: terraform-local-test-cocoapods-repo

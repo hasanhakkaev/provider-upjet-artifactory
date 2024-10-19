@@ -1,0 +1,11 @@
+apiVersion: localpubrepository.crossplane.io/v1alpha1
+kind: PubRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localpubrepository/v1alpha1/pubrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-pub-repo
+  name: terraform-local-test-pub-repo
+spec:
+  forProvider:
+    key: terraform-local-test-pub-repo

@@ -1,0 +1,13 @@
+apiVersion: remotegorepository.crossplane.io/v1alpha1
+kind: GoRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotegorepository/v1alpha1/gorepository
+  labels:
+    testing.upbound.io/example-name: my-remote-go
+  name: my-remote-go
+spec:
+  forProvider:
+    key: my-remote-go
+    url: https://proxy.golang.org/
+    vcsGitProvider: ARTIFACTORY

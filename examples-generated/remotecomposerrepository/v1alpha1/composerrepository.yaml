@@ -1,0 +1,13 @@
+apiVersion: remotecomposerrepository.crossplane.io/v1alpha1
+kind: ComposerRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotecomposerrepository/v1alpha1/composerrepository
+  labels:
+    testing.upbound.io/example-name: my-remote-composer
+  name: my-remote-composer
+spec:
+  forProvider:
+    key: my-remote-composer
+    url: https://github.com/
+    vcsGitProvider: GITHUB

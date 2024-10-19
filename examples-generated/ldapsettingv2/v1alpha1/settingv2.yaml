@@ -1,0 +1,27 @@
+apiVersion: ldapsettingv2.crossplane.io/v1alpha1
+kind: SettingV2
+metadata:
+  annotations:
+    meta.upbound.io/example-id: ldapsettingv2/v1alpha1/settingv2
+  labels:
+    testing.upbound.io/example-name: ldap_name
+  name: ldap-name
+spec:
+  forProvider:
+    allowUserToAccessProfile: false
+    autoCreateUser: true
+    emailAttribute: mail
+    enabled: true
+    key: ldap_name
+    ldapPoisoningProtection: true
+    ldapUrl: ldap://ldap_server_url
+    managerDn: mgr_dn
+    managerPasswordSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system
+    pagingSupportEnabled: false
+    searchBase: ou=users
+    searchFilter: (uid={0})
+    searchSubTree: true
+    userDnPattern: uid={0},ou=People

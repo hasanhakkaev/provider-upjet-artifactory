@@ -1,0 +1,18 @@
+apiVersion: remotemavenrepository.crossplane.io/v1alpha1
+kind: MavenRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: remotemavenrepository/v1alpha1/mavenrepository
+  labels:
+    testing.upbound.io/example-name: maven-remote
+  name: maven-remote
+spec:
+  forProvider:
+    fetchJarsEagerly: true
+    fetchSourcesEagerly: false
+    key: maven-remote-foo
+    max_unique_snapshots: 10
+    metadataRetrievalTimeoutSecs: 120
+    rejectInvalidJars: true
+    suppressPomConsistencyChecks: false
+    url: https://repo1.maven.org/maven2/

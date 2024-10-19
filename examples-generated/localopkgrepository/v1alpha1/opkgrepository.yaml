@@ -1,0 +1,11 @@
+apiVersion: localopkgrepository.crossplane.io/v1alpha1
+kind: OpkgRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localopkgrepository/v1alpha1/opkgrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-opkg-repo
+  name: terraform-local-test-opkg-repo
+spec:
+  forProvider:
+    key: terraform-local-test-opkg-repo

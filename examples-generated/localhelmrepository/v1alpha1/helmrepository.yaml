@@ -1,0 +1,11 @@
+apiVersion: localhelmrepository.crossplane.io/v1alpha1
+kind: HelmRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localhelmrepository/v1alpha1/helmrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-helm-repo
+  name: terraform-local-test-helm-repo
+spec:
+  forProvider:
+    key: terraform-local-test-helm-repo

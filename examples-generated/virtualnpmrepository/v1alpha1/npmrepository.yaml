@@ -1,0 +1,16 @@
+apiVersion: virtualnpmrepository.crossplane.io/v1alpha1
+kind: NpmRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualnpmrepository/v1alpha1/npmrepository
+  labels:
+    testing.upbound.io/example-name: foo-npm
+  name: foo-npm
+spec:
+  forProvider:
+    description: A test virtual repo
+    excludesPattern: com/google/**
+    includesPattern: com/jfrog/**,cloud/jfrog/**
+    key: foo-npm
+    notes: Internal description
+    repositories: [ ]

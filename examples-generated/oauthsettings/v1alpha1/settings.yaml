@@ -1,0 +1,25 @@
+apiVersion: oauthsettings.crossplane.io/v1alpha1
+kind: Settings
+metadata:
+  annotations:
+    meta.upbound.io/example-id: oauthsettings/v1alpha1/settings
+  labels:
+    testing.upbound.io/example-name: oauth
+  name: oauth
+spec:
+  forProvider:
+    allowUserToAccessProfile: true
+    enable: true
+    oauthProvider:
+      - apiUrl: https://organization.okta.com/oauth2/v1/userinfo
+        authUrl: https://organization.okta.com/oauth2/v1/authorize
+        clientId: foo
+        clientSecretSecretRef:
+          key: example-key
+          name: example-secret
+          namespace: upbound-system
+        enabled: false
+        name: okta
+        tokenUrl: https://organization.okta.com/oauth2/v1/token
+        type: openId
+    persistUsers: true

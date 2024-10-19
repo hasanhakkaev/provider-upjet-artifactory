@@ -1,0 +1,11 @@
+apiVersion: localsbtrepository.crossplane.io/v1alpha1
+kind: SbtRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: localsbtrepository/v1alpha1/sbtrepository
+  labels:
+    testing.upbound.io/example-name: terraform-local-test-sbt-repo
+  name: terraform-local-test-sbt-repo
+spec:
+  forProvider:
+    key: terraform-local-test-sbt-repo

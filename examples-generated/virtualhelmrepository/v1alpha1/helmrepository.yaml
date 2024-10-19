@@ -1,0 +1,12 @@
+apiVersion: virtualhelmrepository.crossplane.io/v1alpha1
+kind: HelmRepository
+metadata:
+  annotations:
+    meta.upbound.io/example-id: virtualhelmrepository/v1alpha1/helmrepository
+  labels:
+    testing.upbound.io/example-name: foo-helm-virtual
+  name: foo-helm-virtual
+spec:
+  forProvider:
+    key: foo-helm-virtual
+    useNamespaces: true
