@@ -14,4 +14,4 @@ spec:
     key: foo-conan
     notes: Internal description
     repoLayoutRef: conan-default
-    repositories: [ ]
+    repositories: []

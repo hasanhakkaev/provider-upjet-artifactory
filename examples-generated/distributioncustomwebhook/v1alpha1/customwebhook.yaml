@@ -9,29 +9,29 @@ metadata:
 spec:
   forProvider:
     criteria:
-      - anyReleaseBundle: false
-        excludePatterns:
-          - bar/**
-        includePatterns:
-          - foo/**
-        registeredReleaseBundleNames:
-          - bundle-name
+    - anyReleaseBundle: false
+      excludePatterns:
+      - bar/**
+      includePatterns:
+      - foo/**
+      registeredReleaseBundleNames:
+      - bundle-name
     eventTypes:
-      - distribute_started
-      - distribute_completed
-      - distribute_aborted
-      - distribute_failed
-      - delete_started
-      - delete_completed
-      - delete_failed
+    - distribute_started
+    - distribute_completed
+    - distribute_aborted
+    - distribute_failed
+    - delete_started
+    - delete_completed
+    - delete_failed
     handler:
-      - httpHeaders:
-          headerName1: value1
-          headerName2: value2
-        payload: '{ "ref": "main" , "inputs": { "artifact_path": "test-repo/repo-path"
+    - httpHeaders:
+        headerName1: value1
+        headerName2: value2
+      payload: '{ "ref": "main" , "inputs": { "artifact_path": "test-repo/repo-path"
         } }'
-        secrets:
-          secretName1: value1
-          secretName2: value2
-        url: https://tempurl.org
+      secrets:
+        secretName1: value1
+        secretName2: value2
+      url: https://tempurl.org
     key: distribution-custom-webhook

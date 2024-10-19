@@ -12,10 +12,10 @@ spec:
     excludesPattern: com/google/**
     externalDependenciesEnabled: true
     externalDependenciesPatterns:
-      - '**/github.com/**'
-      - '**/go.googlesource.com/**'
+    - '**/github.com/**'
+    - '**/go.googlesource.com/**'
     includesPattern: com/jfrog/**,cloud/jfrog/**
     key: baz-go
     notes: Internal description
     repoLayoutRef: go-default
-    repositories: [ ]
+    repositories: []

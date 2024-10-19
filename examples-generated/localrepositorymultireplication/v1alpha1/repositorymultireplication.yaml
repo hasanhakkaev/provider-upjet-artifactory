@@ -11,20 +11,20 @@ spec:
     cronExp: 0 0 * * * ?
     enableEventReplication: true
     replication:
-      - enabled: true
-        passwordSecretRef:
-          key: example-key
-          name: example-secret
-          namespace: upbound-system
-        url: ${var.artifactory_url}/artifactory/${artifactory_local_maven_repository.provider_test_dest.key}
-        username: $var.artifactory_username
-      - enabled: true
-        passwordSecretRef:
-          key: example-key
-          name: example-secret
-          namespace: upbound-system
-        url: ${var.artifactory_url}/artifactory/${artifactory_local_maven_repository.provider_test_dest1.key}
-        username: $var.artifactory_username
+    - enabled: true
+      passwordSecretRef:
+        key: example-key
+        name: example-secret
+        namespace: upbound-system
+      url: ${var.artifactory_url}/artifactory/${artifactory_local_maven_repository.provider_test_dest.key}
+      username: $var.artifactory_username
+    - enabled: true
+      passwordSecretRef:
+        key: example-key
+        name: example-secret
+        namespace: upbound-system
+      url: ${var.artifactory_url}/artifactory/${artifactory_local_maven_repository.provider_test_dest1.key}
+      username: $var.artifactory_username
     repoKey: terraform-local-test-maven-repo-basic
 
 ---

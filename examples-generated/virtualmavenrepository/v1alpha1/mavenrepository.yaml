@@ -17,8 +17,8 @@ spec:
     pomRepositoryReferencesCleanupPolicy: discard_active_reference
     repoLayoutRef: maven-2-default
     repositories:
-      - ${artifactory_local_maven_repository.bar.key}
-      - ${artifactory_remote_maven_repository.baz.key}
+    - ${artifactory_local_maven_repository.bar.key}
+    - ${artifactory_remote_maven_repository.baz.key}
 
 ---
 

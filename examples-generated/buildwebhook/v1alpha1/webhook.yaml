@@ -9,22 +9,22 @@ metadata:
 spec:
   forProvider:
     criteria:
-      - anyBuild: true
-        excludePatterns:
-          - bar/**
-        includePatterns:
-          - foo/**
-        selectedBuilds:
-          - build-id
+    - anyBuild: true
+      excludePatterns:
+      - bar/**
+      includePatterns:
+      - foo/**
+      selectedBuilds:
+      - build-id
     eventTypes:
-      - uploaded
-      - deleted
-      - promoted
+    - uploaded
+    - deleted
+    - promoted
     handler:
-      - customHttpHeaders:
-          header-1: value-1
-          header-2: value-2
-        proxy: proxy-key
-        secret: some-secret
-        url: http://tempurl.org/webhook
+    - customHttpHeaders:
+        header-1: value-1
+        header-2: value-2
+      proxy: proxy-key
+      secret: some-secret
+      url: http://tempurl.org/webhook
     key: build-webhook

@@ -10,20 +10,20 @@ spec:
   forProvider:
     name: property-set1
     property:
-      - closedPredefinedValues: true
-        multipleChoice: true
-        name: set1property1
-        predefinedValue:
-          - defaultValue: true
-            name: passed-QA
-          - defaultValue: false
-            name: failed-QA
-      - closedPredefinedValues: false
-        multipleChoice: false
-        name: set1property2
-        predefinedValue:
-          - defaultValue: true
-            name: passed-QA
-          - defaultValue: false
-            name: failed-QA
+    - closedPredefinedValues: true
+      multipleChoice: true
+      name: set1property1
+      predefinedValue:
+      - defaultValue: true
+        name: passed-QA
+      - defaultValue: false
+        name: failed-QA
+    - closedPredefinedValues: false
+      multipleChoice: false
+      name: set1property2
+      predefinedValue:
+      - defaultValue: true
+        name: passed-QA
+      - defaultValue: false
+        name: failed-QA
     visible: true

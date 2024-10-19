@@ -7,6 +7,7 @@ package config
 import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
+
 	"github.com/upbound/provider-artifactory/config/artifactcustomwebhook"
 	"github.com/upbound/provider-artifactory/config/artifactpropertycustomwebhook"
 	"github.com/upbound/provider-artifactory/config/artifactpropertywebhook"

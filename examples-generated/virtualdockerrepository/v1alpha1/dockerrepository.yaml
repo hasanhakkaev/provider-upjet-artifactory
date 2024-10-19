@@ -13,5 +13,5 @@ spec:
     includesPattern: com/jfrog/**,cloud/jfrog/**
     key: foo-docker
     notes: Internal description
-    repositories: [ ]
+    repositories: []
     resolveDockerTagsByTimestamp: true

@@ -13,4 +13,4 @@ spec:
     includesPattern: com/jfrog/**,cloud/jfrog/**
     key: foo-p2
     notes: Internal description
-    repositories: [ ]
+    repositories: []

@@ -10,7 +10,7 @@ spec:
   forProvider:
     key: terraform-federated-test-gradle-repo
     member:
-      - enabled: true
-        url: http://tempurl.org/artifactory/terraform-federated-test-gradle-repo
-      - enabled: true
-        url: http://tempurl2.org/artifactory/terraform-federated-test-gradle-repo-2
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-gradle-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-gradle-repo-2

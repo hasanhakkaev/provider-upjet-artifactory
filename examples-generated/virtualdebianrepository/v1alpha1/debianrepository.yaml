@@ -15,6 +15,6 @@ spec:
     key: foo-debian
     notes: Internal description
     optionalIndexCompressionFormats:
-      - bz2
-      - xz
-    repositories: [ ]
+    - bz2
+    - xz
+    repositories: []

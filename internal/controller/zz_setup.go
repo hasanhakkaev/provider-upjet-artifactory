@@ -9,7 +9,6 @@ import (
 
 	"github.com/crossplane/upjet/pkg/controller"
 
-	token "github.com/upbound/provider-artifactory/internal/controller/access/token"
 	user "github.com/upbound/provider-artifactory/internal/controller/anonymous/user"
 	key "github.com/upbound/provider-artifactory/internal/controller/api/key"
 	customwebhook "github.com/upbound/provider-artifactory/internal/controller/artifactcustomwebhook/customwebhook"
@@ -149,7 +148,7 @@ import (
 	config "github.com/upbound/provider-artifactory/internal/controller/replication/config"
 	layout "github.com/upbound/provider-artifactory/internal/controller/repositorylayout/layout"
 	settingssaml "github.com/upbound/provider-artifactory/internal/controller/saml/settings"
-	tokenscopedtoken "github.com/upbound/provider-artifactory/internal/controller/scopedtoken/token"
+	token "github.com/upbound/provider-artifactory/internal/controller/scopedtoken/token"
 	replicationconfig "github.com/upbound/provider-artifactory/internal/controller/single/replicationconfig"
 	userunmanageduser "github.com/upbound/provider-artifactory/internal/controller/unmanageduser/user"
 	useruser "github.com/upbound/provider-artifactory/internal/controller/user/user"
@@ -186,7 +185,6 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		token.Setup,
 		user.Setup,
 		key.Setup,
 		customwebhook.Setup,
@@ -326,7 +324,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		config.Setup,
 		layout.Setup,
 		settingssaml.Setup,
-		tokenscopedtoken.Setup,
+		token.Setup,
 		replicationconfig.Setup,
 		userunmanageduser.Setup,
 		useruser.Setup,

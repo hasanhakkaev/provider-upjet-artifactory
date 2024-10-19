@@ -9,26 +9,26 @@ metadata:
 spec:
   forProvider:
     criteria:
-      - any_federated: false
-        anyLocal: true
-        anyRemote: false
-        excludePatterns:
-          - bar/**
-        includePatterns:
-          - foo/**
-        repoKeys:
-          - ${artifactory_local_docker_v2_repository.my-docker-local.key}
+    - any_federated: false
+      anyLocal: true
+      anyRemote: false
+      excludePatterns:
+      - bar/**
+      includePatterns:
+      - foo/**
+      repoKeys:
+      - ${artifactory_local_docker_v2_repository.my-docker-local.key}
     eventTypes:
-      - pushed
-      - deleted
-      - promoted
+    - pushed
+    - deleted
+    - promoted
     handler:
-      - customHttpHeaders:
-          header-1: value-1
-          header-2: value-2
-        proxy: proxy-key
-        secret: some-secret
-        url: http://tempurl.org/webhook
+    - customHttpHeaders:
+        header-1: value-1
+        header-2: value-2
+      proxy: proxy-key
+      secret: some-secret
+      url: http://tempurl.org/webhook
     key: docker-webhook
 
 ---

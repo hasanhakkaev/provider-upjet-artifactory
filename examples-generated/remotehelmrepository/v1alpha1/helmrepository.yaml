@@ -10,7 +10,7 @@ spec:
   forProvider:
     externalDependenciesEnabled: true
     externalDependenciesPatterns:
-      - '**github.com**'
+    - '**github.com**'
     helmChartsBaseUrl: https://foo.com
     key: helm-remote-foo25
     url: https://repo.chartcenter.io/

@@ -10,7 +10,6 @@ import "github.com/crossplane/upjet/pkg/config"
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
 	// Import requires using a randomly generated ID from provider: nl-2e21sda
-	"artifactory_access_token":                            config.IdentifierFromProvider,
 	"artifactory_anonymous_user":                          config.IdentifierFromProvider,
 	"artifactory_api_key":                                 config.IdentifierFromProvider,
 	"artifactory_artifact_custom_webhook":                 config.IdentifierFromProvider,

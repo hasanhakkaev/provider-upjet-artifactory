@@ -14,4 +14,4 @@ spec:
     key: foo-generic
     notes: Internal description
     repoLayoutRef: simple-default
-    repositories: [ ]
+    repositories: []

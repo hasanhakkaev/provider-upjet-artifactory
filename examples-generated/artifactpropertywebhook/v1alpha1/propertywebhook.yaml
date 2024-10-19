@@ -9,25 +9,25 @@ metadata:
 spec:
   forProvider:
     criteria:
-      - any_federated: false
-        anyLocal: true
-        anyRemote: false
-        excludePatterns:
-          - bar/**
-        includePatterns:
-          - foo/**
-        repoKeys:
-          - ${artifactory_local_generic_repository.my-generic-local.key}
+    - any_federated: false
+      anyLocal: true
+      anyRemote: false
+      excludePatterns:
+      - bar/**
+      includePatterns:
+      - foo/**
+      repoKeys:
+      - ${artifactory_local_generic_repository.my-generic-local.key}
     eventTypes:
-      - added
-      - deleted
+    - added
+    - deleted
     handler:
-      - customHttpHeaders:
-          header-1: value-1
-          header-2: value-2
-        proxy: proxy-key
-        secret: some-secret
-        url: http://tempurl.org/webhook
+    - customHttpHeaders:
+        header-1: value-1
+        header-2: value-2
+      proxy: proxy-key
+      secret: some-secret
+      url: http://tempurl.org/webhook
     key: artifact-property-webhook
 
 ---

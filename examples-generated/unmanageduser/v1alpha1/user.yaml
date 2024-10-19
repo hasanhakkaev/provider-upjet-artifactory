@@ -10,7 +10,7 @@ spec:
   forProvider:
     email: test-user@artifactory-terraform.com
     groups:
-      - logged-in-users
+    - logged-in-users
     name: terraform
     passwordSecretRef:
       key: example-key

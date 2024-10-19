@@ -13,4 +13,4 @@ spec:
     includesPattern: com/jfrog/**,cloud/jfrog/**
     key: terraform-remote
     notes: Internal description
-    repositories: [ ]
+    repositories: []

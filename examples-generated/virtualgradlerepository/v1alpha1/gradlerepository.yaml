@@ -14,4 +14,4 @@ spec:
     key: foo-gradle
     notes: Internal description
     pomRepositoryReferencesCleanupPolicy: discard_active_reference
-    repositories: [ ]
+    repositories: []

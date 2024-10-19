@@ -10,7 +10,7 @@ spec:
   forProvider:
     key: terraform-federated-test-nuget-repo
     member:
-      - enabled: true
-        url: http://tempurl.org/artifactory/terraform-federated-test-nuget-repo
-      - enabled: true
-        url: http://tempurl2.org/artifactory/terraform-federated-test-nuget-repo-2
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-nuget-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-nuget-repo-2

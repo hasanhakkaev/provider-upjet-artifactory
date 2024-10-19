@@ -10,8 +10,8 @@ spec:
   forProvider:
     email: test-user@artifactory-terraform.com
     groups:
-      - readers
-      - logged-in-users
+    - readers
+    - logged-in-users
     name: terraform
     password_policy:
       digit: 1

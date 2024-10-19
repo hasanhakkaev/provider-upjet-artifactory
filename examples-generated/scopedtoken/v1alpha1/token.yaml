@@ -24,5 +24,5 @@ spec:
   forProvider:
     email: new_user@somewhere.com
     groups:
-      - readers
+    - readers
     name: new_user

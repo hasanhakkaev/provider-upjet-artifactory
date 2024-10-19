@@ -9,26 +9,26 @@ metadata:
 spec:
   forProvider:
     criteria:
-      - anyReleaseBundle: false
-        excludePatterns:
-          - bar/**
-        includePatterns:
-          - foo/**
-        registeredReleaseBundleNames:
-          - bundle-name
+    - anyReleaseBundle: false
+      excludePatterns:
+      - bar/**
+      includePatterns:
+      - foo/**
+      registeredReleaseBundleNames:
+      - bundle-name
     eventTypes:
-      - distribute_started
-      - distribute_completed
-      - distribute_aborted
-      - distribute_failed
-      - delete_started
-      - delete_completed
-      - delete_failed
+    - distribute_started
+    - distribute_completed
+    - distribute_aborted
+    - distribute_failed
+    - delete_started
+    - delete_completed
+    - delete_failed
     handler:
-      - customHttpHeaders:
-          header-1: value-1
-          header-2: value-2
-        proxy: proxy-key
-        secret: some-secret
-        url: http://tempurl.org/webhook
+    - customHttpHeaders:
+        header-1: value-1
+        header-2: value-2
+      proxy: proxy-key
+      secret: some-secret
+      url: http://tempurl.org/webhook
     key: distribution-webhook

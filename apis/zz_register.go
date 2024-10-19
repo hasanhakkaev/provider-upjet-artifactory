@@ -10,8 +10,7 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/upbound/provider-artifactory/apis/access/v1alpha1"
-	v1alpha1anonymous "github.com/upbound/provider-artifactory/apis/anonymous/v1alpha1"
+	v1alpha1 "github.com/upbound/provider-artifactory/apis/anonymous/v1alpha1"
 	v1alpha1api "github.com/upbound/provider-artifactory/apis/api/v1alpha1"
 	v1alpha1artifactcustomwebhook "github.com/upbound/provider-artifactory/apis/artifactcustomwebhook/v1alpha1"
 	v1alpha1artifactory "github.com/upbound/provider-artifactory/apis/artifactory/v1alpha1"
@@ -187,7 +186,6 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
-		v1alpha1anonymous.SchemeBuilder.AddToScheme,
 		v1alpha1api.SchemeBuilder.AddToScheme,
 		v1alpha1artifactcustomwebhook.SchemeBuilder.AddToScheme,
 		v1alpha1artifactory.SchemeBuilder.AddToScheme,

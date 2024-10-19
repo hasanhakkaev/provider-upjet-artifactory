@@ -13,4 +13,4 @@ spec:
     includesPattern: com/jfrog/**,cloud/jfrog/**
     key: foo-composer
     notes: Internal description
-    repositories: [ ]
+    repositories: []

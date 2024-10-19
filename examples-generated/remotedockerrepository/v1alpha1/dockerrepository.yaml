@@ -12,6 +12,6 @@ spec:
     enableTokenAuthentication: true
     externalDependenciesEnabled: true
     externalDependenciesPatterns:
-      - '**/registry-1.docker.io/**'
+    - '**/registry-1.docker.io/**'
     key: my-remote-docker
     url: https://registry-1.docker.io/

@@ -10,7 +10,7 @@ spec:
   forProvider:
     key: terraform-federated-test-rpm-repo
     member:
-      - enabled: true
-        url: http://tempurl.org/artifactory/terraform-federated-test-rpm-repo
-      - enabled: true
-        url: http://tempurl2.org/artifactory/terraform-federated-test-rpm-repo-2
+    - enabled: true
+      url: http://tempurl.org/artifactory/terraform-federated-test-rpm-repo
+    - enabled: true
+      url: http://tempurl2.org/artifactory/terraform-federated-test-rpm-repo-2

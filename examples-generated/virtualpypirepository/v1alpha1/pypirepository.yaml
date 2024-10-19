@@ -13,4 +13,4 @@ spec:
     includesPattern: com/jfrog/**,cloud/jfrog/**
     key: foo-pypi
     notes: Internal description
-    repositories: [ ]
+    repositories: []
